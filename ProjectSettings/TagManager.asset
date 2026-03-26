@@ -17,8 +17,8 @@ TagManager:
   - PlayerBullet
   - Enemy
   - EnemyBullet
-  - 
-  - 
+  - Wall
+  - NavMesh
   - 
   - 
   - 
