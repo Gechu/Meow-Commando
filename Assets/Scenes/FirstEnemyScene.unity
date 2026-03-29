@@ -387,7 +387,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0baeadbc40e25d74f9c95720d0de2f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  speed: 5
+  speed: 7.5
+  dashForce: 15
+  dashTime: 0.3
 --- !u!50 &1098094069
 Rigidbody2D:
   serializedVersion: 5

@@ -167,6 +167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   speed: 5
+  dashForce: 10
+  dashTime: 0.3
 --- !u!50 &502301032
 Rigidbody2D:
   serializedVersion: 5

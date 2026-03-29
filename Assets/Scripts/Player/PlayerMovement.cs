@@ -2,9 +2,18 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 2f;
+    public float speed = 7.5f;
     private Rigidbody2D rb;
     private Vector2 input;
+    private Vector2 lastDirection = Vector2.right;
+
+    // Dash-related
+    private bool isDashing = false;
+    private float dashTimer;
+
+    [Header("Dash")]
+    public float dashForce = 15f;
+    public float dashTime = 0.3f;
 
     void Start()
     {
@@ -21,10 +30,47 @@ public class PlayerMovement : MonoBehaviour
             UnityEngine.InputSystem.Keyboard.current.wKey.isPressed ? 1 : 0
         );
 
+        // If user moves remember it
+        if (input != Vector2.zero)
+        {
+            lastDirection = input.normalized;
+        }
+
+        // Dashing
+        if (UnityEngine.InputSystem.Keyboard.current.spaceKey.wasPressedThisFrame && !isDashing)
+        {
+            StartDash();
+        }
+
     }
 
     void FixedUpdate()
     {
-        rb.linearVelocity = input.normalized * speed;
+        if (isDashing)
+        {
+            rb.linearVelocity = lastDirection * dashForce;
+
+            dashTimer -= Time.fixedDeltaTime;
+            if (dashTimer <= 0)
+            {
+                isDashing = false;
+            }
+        }
+        else
+        {
+            rb.linearVelocity = input.normalized * speed;
+        }
+    }
+
+    void StartDash()
+    {
+        isDashing = true;
+        dashTimer = dashTime;
+
+        // If user wasn't moving anywhere dash right
+        if (lastDirection == Vector2.zero)
+        {
+            lastDirection = Vector2.right;
+        }
     }
 }
