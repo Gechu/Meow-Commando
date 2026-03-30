@@ -19,5 +19,12 @@ public class EnemyBullet : MonoBehaviour
 
             Destroy(gameObject);
         }
+
+        // znikaj po uderzeniu w ścianę
+        if (other.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
 }
