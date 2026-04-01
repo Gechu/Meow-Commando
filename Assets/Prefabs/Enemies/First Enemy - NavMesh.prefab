@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 2059008213380226816}
   - component: {fileID: 7382095134002400121}
   - component: {fileID: 4447797386497733740}
-  - component: {fileID: 8544790344022192464}
+  - component: {fileID: -3974713639303629176}
   m_Layer: 7
   m_Name: First Enemy - NavMesh
   m_TagString: Enemy
@@ -254,7 +254,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1.5}
   m_EdgeRadius: 0
---- !u!114 &8544790344022192464
+--- !u!114 &-3974713639303629176
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -263,20 +263,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 4620781330544459104}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfe08c936d32af14bb5aa0c944123102, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b1615a8920599d45820e6851112469e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FirstEnemyAI
-  minDistance: 8
-  maxDistance: 10
-  moveSpeed: 3
-  baseStrafeSpeed: 1.5
+  m_EditorClassIdentifier: Assembly-CSharp::FirstEnemyNavMeshAI
+  minDistance: 6
+  maxDistance: 8
+  strafeDistance: 2
   strafeChangeMin: 2
   strafeChangeMax: 4
-  reactionInterval: 0.1
-  separationRadius: 4
-  separationForce: 3.5
-  wallAvoidRadius: 3
-  wallAvoidForce: 3
+  repathInterval: 0.2
 --- !u!1 &6575210850906383601
 GameObject:
   m_ObjectHideFlags: 0
