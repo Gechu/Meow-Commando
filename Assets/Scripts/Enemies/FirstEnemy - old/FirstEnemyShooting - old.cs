@@ -1,34 +1,28 @@
 using UnityEngine;
 
-public class FirstEnemyShooting : MonoBehaviour
+public class FirstEnemyShootingOld : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform firePoint;
 
     public float bulletSpeed = 10f;
 
-    public float spreadAngle = 10f;
-    public float timeBetweenShots = 0.2f;
-    public float burstCooldown = 2f;
+    public float spreadAngle = 10f; 
+    public float timeBetweenShots = 0.2f; 
+    public float burstCooldown = 2f; 
 
     public int numofShots = 3;
-
-    [Header("Line of Sight (2D)")]
-    public LayerMask wallMask;     // ustaw warstwę ścian (2D collidery)
-    public float losExtra = 0.05f; // mały zapas
 
     Transform player;
     bool isShooting = false;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
     {
-        if (!player) return;
-
         if (!isShooting)
             StartCoroutine(ShootBurst());
     }
@@ -39,10 +33,7 @@ public class FirstEnemyShooting : MonoBehaviour
 
         for (int i = 0; i < numofShots; i++)
         {
-            // Strzelaj tylko jeśli widzi gracza
-            if (HasLineOfSight2D(player.position))
-                ShootOneBullet();
-
+            ShootOneBullet();
             yield return new WaitForSeconds(timeBetweenShots);
         }
 
@@ -53,23 +44,9 @@ public class FirstEnemyShooting : MonoBehaviour
         isShooting = false;
     }
 
-    bool HasLineOfSight2D(Vector3 targetPos)
-    {
-        Vector2 origin = firePoint ? (Vector2)firePoint.position : (Vector2)transform.position;
-        Vector2 toTarget = (Vector2)(targetPos - (Vector3)origin);
-        float dist = toTarget.magnitude;
-
-        if (dist <= 0.0001f) return true;
-
-        Vector2 dir = toTarget / dist;
-
-        RaycastHit2D hit = Physics2D.Raycast(origin, dir, dist - losExtra, wallMask);
-        return hit.collider == null;
-    }
-
     void ShootOneBullet()
     {
-        if (!player || !firePoint || !bulletPrefab) return;
+        if (player == null) return;
 
         // kierunek od końcówki lufy
         Vector2 dir = (player.position - firePoint.position).normalized;
@@ -87,7 +64,6 @@ public class FirstEnemyShooting : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
 
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        if (rb)
-            rb.linearVelocity = finalDir * bulletSpeed;
+        rb.linearVelocity = finalDir * bulletSpeed;
     }
 }
