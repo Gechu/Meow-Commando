@@ -392,6 +392,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e589a4ff1330a43b5390bb6ce87e98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyGun
+  firePoint: {fileID: 4241304718055301577}
+  wallMask:
+    serializedVersion: 2
+    m_Bits: 512
+  losExtra: 0.05
+  lostTargetHoldTime: Infinity
+  turnSpeedDegPerSec: 720
 --- !u!114 &1018265889772724193
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -411,6 +411,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e589a4ff1330a43b5390bb6ce87e98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyGun
+  firePoint: {fileID: 4241304718055301577}
+  wallMask:
+    serializedVersion: 2
+    m_Bits: 512
+  losExtra: 0.05
+  lostTargetHoldTime: Infinity
+  turnSpeedDegPerSec: 720
 --- !u!114 &1512275615785412735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,6 +433,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6714932768004369664, guid: 6cf0709665ea1a04c96804a0c98ef5e7, type: 3}
   firePoint: {fileID: 4241304718055301577}
   bulletSpeed: 7
+  shootRange: 14
   spreadAngle: 10
   timeBetweenShots: 2
   shotJitterPercent: 0.15

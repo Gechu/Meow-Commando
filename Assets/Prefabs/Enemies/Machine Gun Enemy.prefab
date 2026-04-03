@@ -268,16 +268,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MachineGunEnemyAI
   minDistance: 8
   maxDistance: 11
-  repathInterval: 0.15
-  stepDistance: 1.1
-  baseStrafeSpeed: 1.1
+  strafeDistance: 1.4
   strafeChangeMin: 3.5
   strafeChangeMax: 6
-  wallMask:
-    serializedVersion: 2
-    m_Bits: 0
-  strafeWallCheckDist: 1.2
-  strafeWallExtraRadius: 0.2
+  retreatStep: 1.6
+  repathInterval: 0.15
+  sampleRadius: 2
 --- !u!1 &6575210850906383601
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,6 +412,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e589a4ff1330a43b5390bb6ce87e98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyGun
+  firePoint: {fileID: 4241304718055301577}
+  wallMask:
+    serializedVersion: 2
+    m_Bits: 512
+  losExtra: 0.05
+  lostTargetHoldTime: Infinity
+  turnSpeedDegPerSec: 720
 --- !u!114 &5284192931419149488
 MonoBehaviour:
   m_ObjectHideFlags: 0

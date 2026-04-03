@@ -2,148 +2,100 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class MachineGunEnemyAI_Simple : MonoBehaviour
+public class MachineGunEnemyAI : MonoBehaviour
 {
-    [Header("Ideal distance")]
-    [SerializeField] private float minDistance = 8f;
-    [SerializeField] private float maxDistance = 11f;
+    [Header("Distance")]
+    public float minDistance = 8f;
+    public float maxDistance = 11f;
 
-    [Header("Repath (distance keeping)")]
-    [SerializeField] private float repathInterval = 0.25f;
+    [Header("Strafe")]
+    public float strafeDistance = 1.4f;     // mniejsze niż w Uzi
+    public float strafeChangeMin = 3.5f;    // dłużej trzyma jedną stronę
+    public float strafeChangeMax = 6.0f;
 
-    [Header("Occasional reposition (gives skirmisher feel)")]
-    [SerializeField] private float repositionEveryMin = 1.2f;
-    [SerializeField] private float repositionEveryMax = 2.2f;
-    [SerializeField] private float repositionDistance = 2.2f;
+    [Header("Movement steps")]
+    [Tooltip("Jak daleko próbować odskoczyć/cofnąć się przy zbyt małym dystansie.")]
+    public float retreatStep = 1.6f;
+
+    [Tooltip("Jak daleko w bok/przód wybieramy punkt co repath.")]
+    public float repathInterval = 0.2f;
+
+    [Header("NavMesh sampling")]
+    [Tooltip("Promień SamplePosition. Raczej mały przy cienkich ścianach.")]
+    public float sampleRadius = 2.0f; // jeśli dalej głupieje przy ścianach, zmniejsz do 1.0–1.5
 
     private NavMeshAgent agent;
     private Transform player;
 
-    private float repathTimer;
-    private float nextRepositionTime;
-
-    private NavMeshPath tmpPath;
-
-    private void Awake()
-    {
-        agent = GetComponent<NavMeshAgent>();
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
-        agent.autoBraking = true;
-        agent.stoppingDistance = 0f;
-
-        tmpPath = new NavMeshPath();
-    }
+    private float strafeDirection = 1f;
+    private float strafeTimer = 0f;
+    private float repathTimer = 0f;
 
     private void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
-        ScheduleNextReposition();
+
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+
+        ResetStrafe();
     }
 
     private void Update()
     {
         if (!player) return;
 
-        // 1) Trzymanie dystansu (NavMesh-first)
+        // zmiana kierunku strafe co jakiś czas (rzadziej niż Uzi)
+        strafeTimer -= Time.deltaTime;
+        if (strafeTimer <= 0f)
+            ResetStrafe();
+
+        // repath rzadziej
         repathTimer -= Time.deltaTime;
-        if (repathTimer <= 0f)
+        if (repathTimer > 0f) return;
+        repathTimer = repathInterval;
+
+        Vector2 toPlayer = player.position - transform.position;
+        float dist = toPlayer.magnitude;
+        Vector2 dir = (dist > 0.001f) ? (toPlayer / dist) : Vector2.right;
+
+        Vector3 desiredPoint;
+
+        if (dist < minDistance)
         {
-            repathTimer = repathInterval;
-            KeepIdealDistance();
+            // wycofaj się (krótszy krok, żeby mniej wciskał w ściany)
+            desiredPoint = transform.position - (Vector3)(dir * retreatStep);
+        }
+        else if (dist > maxDistance)
+        {
+            // podejdź
+            desiredPoint = player.position;
+        }
+        else
+        {
+            // strafe w bok w idealnym dystansie (mniejszy niż Uzi)
+            Vector2 perp = new Vector2(-dir.y, dir.x) * strafeDirection;
+            desiredPoint = transform.position + (Vector3)(perp * strafeDistance);
         }
 
-        // 2) Co jakiś czas: spróbuj zrobić reposition w bok (jeden krok)
-        if (Time.time >= nextRepositionTime)
+        // przyklej do navmesha
+        if (NavMesh.SamplePosition(desiredPoint, out var hit, sampleRadius, NavMesh.AllAreas))
         {
-            TryRepositionSideways();
-            ScheduleNextReposition();
+            agent.SetDestination(hit.position);
+        }
+        else
+        {
+            // awaryjnie: zostań, zamiast szarpać
+            agent.SetDestination(transform.position);
         }
 
         transform.rotation = Quaternion.identity;
     }
 
-    private void KeepIdealDistance()
+    private void ResetStrafe()
     {
-        Vector2 toPlayer = player.position - transform.position;
-        float dist = toPlayer.magnitude;
-        if (dist <= 0.001f) return;
-
-        Vector2 dir = toPlayer / dist;
-
-        // za daleko -> podejdź do gracza
-        if (dist > maxDistance)
-        {
-            SetDestSafe(player.position, 2f);
-            return;
-        }
-
-        // za blisko -> idź "od gracza" (punkt retreat), ale tylko jeśli path complete
-        if (dist < minDistance)
-        {
-            Vector3 retreatTarget = transform.position - (Vector3)(dir * (minDistance - dist + 1.5f));
-            if (!SetDestSafe(retreatTarget, 2f))
-            {
-                // fallback: jak nie ma gdzie się cofnąć, to po prostu stój (lepsze niż wpychanie w ścianę)
-                StopAgent();
-            }
-            return;
-        }
-
-        // w idealnym dystansie: nie ustawiaj co chwilę nowych celów
-        StopAgent();
-    }
-
-    private void TryRepositionSideways()
-    {
-        Vector2 toPlayer = player.position - transform.position;
-        float dist = toPlayer.magnitude;
-        if (dist <= 0.001f) return;
-
-        // reposition rób głównie gdy jest w "ideal" range (żeby nie psuć cofania/podejścia)
-        if (dist < minDistance || dist > maxDistance) return;
-
-        Vector2 dir = toPlayer / dist;
-        Vector2 perp = new Vector2(-dir.y, dir.x);
-
-        // spróbuj lewo/prawo (losowo zaczynając)
-        int first = (Random.value > 0.5f) ? 1 : -1;
-
-        if (TrySetSide(perp * first)) return;
-        TrySetSide(perp * -first);
-    }
-
-    private bool TrySetSide(Vector2 sideDir)
-    {
-        Vector3 target = transform.position + (Vector3)(sideDir.normalized * repositionDistance);
-
-        // tylko jeśli na navmeshu i path complete
-        return SetDestSafe(target, 2f);
-    }
-
-    private bool SetDestSafe(Vector3 target, float sampleRadius)
-    {
-        if (!NavMesh.SamplePosition(target, out var hit, sampleRadius, NavMesh.AllAreas))
-            return false;
-
-        if (!NavMesh.CalculatePath(transform.position, hit.position, NavMesh.AllAreas, tmpPath))
-            return false;
-
-        if (tmpPath.status != NavMeshPathStatus.PathComplete)
-            return false;
-
-        agent.SetDestination(hit.position);
-        return true;
-    }
-
-    private void StopAgent()
-    {
-        if (agent.hasPath) agent.ResetPath();
-        agent.velocity = Vector3.zero;
-    }
-
-    private void ScheduleNextReposition()
-    {
-        nextRepositionTime = Time.time + Random.Range(repositionEveryMin, repositionEveryMax);
+        strafeDirection = (Random.value > 0.5f) ? 1f : -1f;
+        strafeTimer = Random.Range(strafeChangeMin, strafeChangeMax);
     }
 }
