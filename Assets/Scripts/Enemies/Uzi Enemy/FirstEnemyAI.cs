@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class FirstEnemyNavMeshAI : MonoBehaviour
+public class UziEnemyAI : MonoBehaviour
 {
     [Header("Dystans")]
     public float minDistance = 6f;

@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 4447797386497733740}
   - component: {fileID: 4599983139955931603}
   m_Layer: 7
-  m_Name: Second Enemy - NavMesh
+  m_Name: Simple Gun Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

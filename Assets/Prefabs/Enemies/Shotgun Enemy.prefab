@@ -113,7 +113,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.9150943, g: 0.15107687, b: 0.15107687, a: 1}
+  m_Color: {r: 0.9137255, g: 0.58559173, b: 0.15294115, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -134,9 +134,10 @@ GameObject:
   - component: {fileID: 2059008213380226816}
   - component: {fileID: 7382095134002400121}
   - component: {fileID: 4447797386497733740}
-  - component: {fileID: -3974713639303629176}
+  - component: {fileID: 7212119842093689810}
+  - component: {fileID: 2149510438798367503}
   m_Layer: 7
-  m_Name: First Enemy - NavMesh
+  m_Name: Shotgun Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -254,7 +255,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1.5}
   m_EdgeRadius: 0
---- !u!114 &-3974713639303629176
+--- !u!114 &7212119842093689810
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -263,15 +264,44 @@ MonoBehaviour:
   m_GameObject: {fileID: 4620781330544459104}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b1615a8920599d45820e6851112469e, type: 3}
+  m_Script: {fileID: 11500000, guid: efb9d34e5be730d47a706864619f6ab1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FirstEnemyNavMeshAI
-  minDistance: 6
-  maxDistance: 8
-  strafeDistance: 2
-  strafeChangeMin: 2
-  strafeChangeMax: 4
-  repathInterval: 0.2
+  m_EditorClassIdentifier: Assembly-CSharp::ShotgunShooting
+  firePoint: {fileID: 4241304718055301577}
+  bulletPrefab: {fileID: 6714932768004369664, guid: 6cf0709665ea1a04c96804a0c98ef5e7, type: 3}
+  shootRange: 9
+  aimTime: 1
+  shotCooldown: 1.4
+  cooldownJitterPercent: 0.15
+  pelletsMin: 7
+  pelletsMax: 10
+  corePelletRatio: 0.65
+  coreSpreadAngle: 10
+  outerSpreadAngle: 35
+  pelletSpeedMin: 4
+  pelletSpeedMax: 7
+  pelletLifetime: 1
+--- !u!114 &2149510438798367503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4620781330544459104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 443d4cdc4212fae45acb00bfa0e199d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShotgunEnemyAI
+  stopDistance: 6
+  resumeDistance: 7
+  repathInterval: 0.25
+  sidestepDistance: 1.5
+  sidestepDuration: 0.35
+  wallMask:
+    serializedVersion: 2
+    m_Bits: 0
+  losExtra: 0.05
 --- !u!1 &6575210850906383601
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,7 +384,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.49056602, g: 0.071733706, b: 0.071733706, a: 1}
+  m_Color: {r: 0.49019608, g: 0.21869642, b: 0.07058823, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -373,7 +403,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2506713169597462635}
   - component: {fileID: 1160159455989808758}
-  - component: {fileID: 2489587125035049887}
   m_Layer: 7
   m_Name: GunPivot
   m_TagString: Untagged
@@ -410,26 +439,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e589a4ff1330a43b5390bb6ce87e98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyGun
---- !u!114 &2489587125035049887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7312119227706931058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b467f971b5e000d4d91e48e97a0c88e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FirstEnemyShooting
-  bulletPrefab: {fileID: 6714932768004369664, guid: 6cf0709665ea1a04c96804a0c98ef5e7, type: 3}
-  firePoint: {fileID: 4241304718055301577}
-  bulletSpeed: 10
-  spreadAngle: 10
-  timeBetweenShots: 0.2
-  burstCooldown: 2
-  numofShots: 3
-  wallMask:
-    serializedVersion: 2
-    m_Bits: 512
-  losExtra: 0.1
