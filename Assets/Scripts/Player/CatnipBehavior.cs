@@ -9,7 +9,8 @@ public class CatnipBehavior : MonoBehaviour
     public float duration = 3f;
 
     public float speedMultiplier = 2f;
-    public float bulletSpeedMultiplier = 2f;
+    public float bulletSpeedMultiplier = 1.5f;
+    public float fireRateMultiplier = 0.5f;
 
     private PlayerMovement movement;
     private PlayerShooting shooting;
@@ -55,11 +56,13 @@ public class CatnipBehavior : MonoBehaviour
 
         movement.speed *= speedMultiplier;
         shooting.bulletSpeed *= bulletSpeedMultiplier;
+        shooting.fireRate *= fireRateMultiplier;
 
         yield return new WaitForSeconds(duration);
 
         movement.speed /= speedMultiplier;
         shooting.bulletSpeed /= bulletSpeedMultiplier;
+        shooting.fireRate /= fireRateMultiplier;
 
         isActive = false;
     }
