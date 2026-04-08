@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FirstEnemyShooting : MonoBehaviour
+public class FirstEnemyShootingOld : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform firePoint;

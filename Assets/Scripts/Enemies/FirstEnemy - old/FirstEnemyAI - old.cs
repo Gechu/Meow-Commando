@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class FirstEnemyAI : MonoBehaviour
+public class FirstEnemyAIOld : MonoBehaviour
 {
     [Header("Dystans")]
     public float minDistance = 6f;

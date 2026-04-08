@@ -132,10 +132,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7264818220764296106}
   - component: {fileID: 2059008213380226816}
+  - component: {fileID: 7382095134002400121}
   - component: {fileID: 4447797386497733740}
-  - component: {fileID: 8544790344022192464}
+  - component: {fileID: -3974713639303629176}
+  - component: {fileID: 7356740279723919072}
   m_Layer: 7
-  m_Name: First Enemy - no NavMesh
+  m_Name: Uzi Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,6 +187,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!195 &7382095134002400121
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4620781330544459104}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1
+  m_Speed: 3
+  m_Acceleration: 100
+  avoidancePriority: 50
+  m_AngularSpeed: 0
+  m_StoppingDistance: 0.5
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2.5
+  m_BaseOffset: 1.25
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!61 &4447797386497733740
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -231,7 +255,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1.5}
   m_EdgeRadius: 0
---- !u!114 &8544790344022192464
+--- !u!114 &-3974713639303629176
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -240,20 +264,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 4620781330544459104}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfe08c936d32af14bb5aa0c944123102, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b1615a8920599d45820e6851112469e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FirstEnemyAI
+  m_EditorClassIdentifier: Assembly-CSharp::FirstEnemyNavMeshAI
   minDistance: 6
   maxDistance: 8
-  moveSpeed: 3
-  baseStrafeSpeed: 1.5
+  strafeDistance: 2
   strafeChangeMin: 2
   strafeChangeMax: 4
-  reactionInterval: 0.1
-  separationRadius: 4
-  separationForce: 3.5
-  wallAvoidRadius: 3
-  wallAvoidForce: 3
+  repathInterval: 0.2
+--- !u!114 &7356740279723919072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4620781330544459104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4517e4bb02e19d242867de11b2ad1199, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHP
+  maxHP: 3
 --- !u!1 &6575210850906383601
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,7 +387,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2506713169597462635}
   - component: {fileID: 1160159455989808758}
-  - component: {fileID: 1018265889772724193}
+  - component: {fileID: 2489587125035049887}
   m_Layer: 7
   m_Name: GunPivot
   m_TagString: Untagged
@@ -399,7 +431,7 @@ MonoBehaviour:
   losExtra: 0.05
   lostTargetHoldTime: Infinity
   turnSpeedDegPerSec: 720
---- !u!114 &1018265889772724193
+--- !u!114 &2489587125035049887
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -408,13 +440,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 7312119227706931058}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e610b62fb9559d4784d3d9b37411eda, type: 3}
+  m_Script: {fileID: 11500000, guid: b467f971b5e000d4d91e48e97a0c88e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FirstEnemyShooting
   bulletPrefab: {fileID: 6714932768004369664, guid: 6cf0709665ea1a04c96804a0c98ef5e7, type: 3}
   firePoint: {fileID: 4241304718055301577}
   bulletSpeed: 10
+  shootRange: 14
   spreadAngle: 10
   timeBetweenShots: 0.2
   burstCooldown: 2
   numofShots: 3
+  wallMask:
+    serializedVersion: 2
+    m_Bits: 512
+  losExtra: 0.1
