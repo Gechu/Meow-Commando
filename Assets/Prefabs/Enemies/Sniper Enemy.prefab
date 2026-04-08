@@ -113,7 +113,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.9150943, g: 0.15107687, b: 0.15107687, a: 1}
+  m_Color: {r: 0.15294115, g: 0.9137255, b: 0.6138857, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -134,10 +134,12 @@ GameObject:
   - component: {fileID: 2059008213380226816}
   - component: {fileID: 7382095134002400121}
   - component: {fileID: 4447797386497733740}
-  - component: {fileID: -3974713639303629176}
-  - component: {fileID: 7356740279723919072}
+  - component: {fileID: 9127404800650770419}
+  - component: {fileID: 1608440463485030772}
+  - component: {fileID: 2042664918572917095}
+  - component: {fileID: 6860878410119355241}
   m_Layer: 7
-  m_Name: Uzi Enemy
+  m_Name: Sniper Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -255,7 +257,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1.5}
   m_EdgeRadius: 0
---- !u!114 &-3974713639303629176
+--- !u!114 &9127404800650770419
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -264,16 +266,152 @@ MonoBehaviour:
   m_GameObject: {fileID: 4620781330544459104}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b1615a8920599d45820e6851112469e, type: 3}
+  m_Script: {fileID: 11500000, guid: fbc8f096a7bbdf44f86e160a1eef6d5d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FirstEnemyNavMeshAI
-  minDistance: 6
-  maxDistance: 8
-  strafeDistance: 2
-  strafeChangeMin: 2
-  strafeChangeMax: 4
-  repathInterval: 0.2
---- !u!114 &7356740279723919072
+  m_EditorClassIdentifier: Assembly-CSharp::SniperEnemyAI
+  shooting: {fileID: 1608440463485030772}
+  minDistance: 14
+  maxDistance: 20
+  repathInterval: 0.25
+  repositionInterval: 1
+  repositionDistance: 6
+  wallMask:
+    serializedVersion: 2
+    m_Bits: 512
+  losExtra: 0.05
+--- !u!114 &1608440463485030772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4620781330544459104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77cbb2efcecd363448db0b78cfcd65b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SniperEnemyShooting
+  bulletPrefab: {fileID: 6714932768004369664, guid: 6cf0709665ea1a04c96804a0c98ef5e7, type: 3}
+  firePoint: {fileID: 4241304718055301577}
+  laser: {fileID: 2042664918572917095}
+  bulletSpeed: 45
+  cooldownAfterShot: 1
+  chargeTime: 2
+  wallMask:
+    serializedVersion: 2
+    m_Bits: 512
+  losExtra: 0.1
+--- !u!120 &2042664918572917095
+LineRenderer:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4620781330544459104}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  m_Parameters:
+    serializedVersion: 3
+    widthMultiplier: 1
+    widthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.02467398
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    colorGradient:
+      serializedVersion: 2
+      key0: {r: 1, g: 0.0101034995, b: 0, a: 1}
+      key1: {r: 1, g: 0.0101034995, b: 0, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    numCornerVertices: 0
+    numCapVertices: 0
+    alignment: 0
+    textureMode: 0
+    textureScale: {x: 1, y: 1}
+    shadowBias: 0.5
+    generateLightingData: 0
+  m_UseWorldSpace: 1
+  m_Loop: 0
+  m_ApplyActiveColorSpace: 1
+--- !u!114 &6860878410119355241
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -368,7 +506,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.49056602, g: 0.071733706, b: 0.071733706, a: 1}
+  m_Color: {r: 0.12811081, g: 0.4245283, b: 0.05807228, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -387,7 +525,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2506713169597462635}
   - component: {fileID: 1160159455989808758}
-  - component: {fileID: 2489587125035049887}
   m_Layer: 7
   m_Name: GunPivot
   m_TagString: Untagged
@@ -431,27 +568,3 @@ MonoBehaviour:
   losExtra: 0.05
   lostTargetHoldTime: Infinity
   turnSpeedDegPerSec: 720
---- !u!114 &2489587125035049887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7312119227706931058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b467f971b5e000d4d91e48e97a0c88e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FirstEnemyShooting
-  bulletPrefab: {fileID: 6714932768004369664, guid: 6cf0709665ea1a04c96804a0c98ef5e7, type: 3}
-  firePoint: {fileID: 4241304718055301577}
-  bulletSpeed: 10
-  shootRange: 14
-  spreadAngle: 10
-  timeBetweenShots: 0.2
-  burstCooldown: 2
-  numofShots: 3
-  wallMask:
-    serializedVersion: 2
-    m_Bits: 512
-  losExtra: 0.1

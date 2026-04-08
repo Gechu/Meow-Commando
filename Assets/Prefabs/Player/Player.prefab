@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 753378358b2bdb54ba2c183b5337edda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShooting
-  bulletPrefab: {fileID: 2431276257079418612, guid: 2dc2c19932c5f7b4a891438b2a3a8541, type: 3}
+  bulletPrefab: {fileID: 5571658446651978944, guid: 5e50d7ef8a993f74d97f0a51fac161e6, type: 3}
   bulletSpeed: 10
 --- !u!114 &3769193806178733765
 MonoBehaviour:
