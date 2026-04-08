@@ -4,7 +4,7 @@ public class CatnipPickup : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Debug.Log("Dotkniêto: " + collision.name);
+        Debug.Log("Dotkniêto: " + collision.name);
 
         CatnipBehavior player = collision.GetComponentInParent<CatnipBehavior>();
 

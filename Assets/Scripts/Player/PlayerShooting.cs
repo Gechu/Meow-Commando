@@ -5,7 +5,7 @@ public class PlayerShooting : MonoBehaviour
 {
     private PlayerMovement movement;
     public GameObject bulletPrefab;
-    public float bulletSpeed = 10f;
+    public float bulletSpeed = 15f;
 
     [Header("Fire Rate")]
     public float fireRate = 0.5f;

@@ -21,11 +21,18 @@ public class CatnipBehavior : MonoBehaviour
 
     void Start()
     {
-        // Debug.Log(ui);
         movement = GetComponent<PlayerMovement>();
         shooting = GetComponent<PlayerShooting>();
 
-        ui.UpdateUI(catnipCount);
+        if (ui == null)
+            ui = FindFirstObjectByType<CatnipUI>();
+
+        if (ui != null)
+            ui.UpdateUI(catnipCount);
+
+        Debug.Log("movement: " + movement);
+        Debug.Log("shooting: " + shooting);
+        Debug.Log("ui: " + ui);
     }
 
     void Update()
