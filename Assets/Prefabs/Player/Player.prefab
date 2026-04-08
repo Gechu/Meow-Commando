@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3515191466858229608}
   - component: {fileID: 2115658806967250254}
   - component: {fileID: 3769193806178733765}
+  - component: {fileID: 7733288234115115839}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -213,3 +214,20 @@ MonoBehaviour:
   healthUI: {fileID: 0}
   maxHP: 3
   currentHP: 0
+--- !u!114 &7733288234115115839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5584210346609194854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c613dfab3bb178b4bbcaab3c93e1f56b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CatnipBehavior
+  catnipCount: 0
+  duration: 3
+  speedMultiplier: 2
+  bulletSpeedMultiplier: 2
+  ui: {fileID: 0}

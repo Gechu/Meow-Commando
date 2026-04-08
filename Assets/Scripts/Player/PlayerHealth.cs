@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    private PlayerMovement movement;
     public HealthUI healthUI;
     public int maxHP = 3;
     public int currentHP;
@@ -11,15 +12,20 @@ public class PlayerHealth : MonoBehaviour
         currentHP = maxHP;
         healthUI.CreateHearts(maxHP);
         healthUI.UpdateHearts(currentHP);
+        movement = GetComponent<PlayerMovement>();
     }
 
     public void TakeDamage(int amount)
     {
+        if (movement != null && movement.IsInvincible)
+            return;
+
         currentHP -= amount;
-        healthUI.UpdateHearts(currentHP);
 
         if (currentHP < 0)
             currentHP = 0;
+
+        healthUI.UpdateHearts(currentHP);
 
         Debug.Log("HP: " + currentHP);
 
@@ -27,6 +33,21 @@ public class PlayerHealth : MonoBehaviour
         {
             Die();
         }
+    }
+
+    public void Heal(int amount)
+    {
+        if (currentHP >= maxHP)
+            return;
+
+        currentHP += amount;
+
+        if (currentHP > maxHP)
+            currentHP = maxHP;
+
+        healthUI.UpdateHearts(currentHP);
+
+        Debug.Log("Uleczono! HP: " + currentHP);
     }
 
     public void UpgradeHP(int amount)
