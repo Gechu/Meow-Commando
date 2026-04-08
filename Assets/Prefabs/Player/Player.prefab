@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3515191466858229608}
   - component: {fileID: 2115658806967250254}
   - component: {fileID: 3769193806178733765}
+  - component: {fileID: 7733288234115115839}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -196,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 753378358b2bdb54ba2c183b5337edda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShooting
-  bulletPrefab: {fileID: 2431276257079418612, guid: 2dc2c19932c5f7b4a891438b2a3a8541, type: 3}
+  bulletPrefab: {fileID: 5571658446651978944, guid: 5e50d7ef8a993f74d97f0a51fac161e6, type: 3}
   bulletSpeed: 10
 --- !u!114 &3769193806178733765
 MonoBehaviour:
@@ -213,3 +214,20 @@ MonoBehaviour:
   healthUI: {fileID: 0}
   maxHP: 3
   currentHP: 0
+--- !u!114 &7733288234115115839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5584210346609194854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c613dfab3bb178b4bbcaab3c93e1f56b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CatnipBehavior
+  catnipCount: 0
+  duration: 3
+  speedMultiplier: 2
+  bulletSpeedMultiplier: 2
+  ui: {fileID: 0}

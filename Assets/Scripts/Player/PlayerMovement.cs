@@ -10,6 +10,12 @@ public class PlayerMovement : MonoBehaviour
     // Dash-related
     private bool isDashing = false;
     private float dashTimer;
+    public bool IsDashing => isDashing;
+
+    [Header("Invincibility")]
+    public float invincibilityTime = 0.35f;
+    private float invincibilityTimer = 0f;
+    public bool IsInvincible => invincibilityTimer > 0f;
 
     [Header("Dash")]
     public float dashForce = 15f;
@@ -42,6 +48,10 @@ public class PlayerMovement : MonoBehaviour
             StartDash();
         }
 
+        if (invincibilityTimer > 0f)
+        {
+            invincibilityTimer -= Time.deltaTime;
+        }
     }
 
     void FixedUpdate()
@@ -66,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
     {
         isDashing = true;
         dashTimer = dashTime;
+        invincibilityTimer = invincibilityTime;
 
         // If user wasn't moving anywhere dash right
         if (lastDirection == Vector2.zero)
