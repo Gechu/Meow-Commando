@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 7382095134002400121}
   - component: {fileID: 4447797386497733740}
   - component: {fileID: -3974713639303629176}
+  - component: {fileID: 7356740279723919072}
   m_Layer: 7
   m_Name: Uzi Enemy
   m_TagString: Enemy
@@ -272,6 +273,19 @@ MonoBehaviour:
   strafeChangeMin: 2
   strafeChangeMax: 4
   repathInterval: 0.2
+--- !u!114 &7356740279723919072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4620781330544459104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4517e4bb02e19d242867de11b2ad1199, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHP
+  maxHP: 3
 --- !u!1 &6575210850906383601
 GameObject:
   m_ObjectHideFlags: 0

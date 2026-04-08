@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 9127404800650770419}
   - component: {fileID: 1608440463485030772}
   - component: {fileID: 2042664918572917095}
+  - component: {fileID: 6860878410119355241}
   m_Layer: 7
   m_Name: Sniper Enemy
   m_TagString: Enemy
@@ -410,6 +411,19 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &6860878410119355241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4620781330544459104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4517e4bb02e19d242867de11b2ad1199, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHP
+  maxHP: 3
 --- !u!1 &6575210850906383601
 GameObject:
   m_ObjectHideFlags: 0
