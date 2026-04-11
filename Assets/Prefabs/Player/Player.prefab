@@ -183,6 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   speed: 7.5
+  invincibilityTime: 0.35
   dashForce: 15
   dashTime: 0.3
 --- !u!114 &2115658806967250254
@@ -197,8 +198,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 753378358b2bdb54ba2c183b5337edda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShooting
-  bulletPrefab: {fileID: 5571658446651978944, guid: 5e50d7ef8a993f74d97f0a51fac161e6, type: 3}
+  bulletPrefab: {fileID: 2431276257079418612, guid: 2dc2c19932c5f7b4a891438b2a3a8541, type: 3}
   bulletSpeed: 10
+  fireRate: 0.5
 --- !u!114 &3769193806178733765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,4 +232,5 @@ MonoBehaviour:
   duration: 3
   speedMultiplier: 2
   bulletSpeedMultiplier: 2
+  fireRateMultiplier: 0.5
   ui: {fileID: 0}
