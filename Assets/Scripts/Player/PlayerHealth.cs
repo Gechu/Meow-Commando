@@ -67,7 +67,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Gracz umar³");
-        // jakaœ animacja, restart poziomu, czy jakiœ death screen czy coœ
+        Debug.Log("Gracz umarï¿½");
+        // jakaï¿½ animacja, restart poziomu, czy jakiï¿½ death screen czy coï¿½
     }
 }
