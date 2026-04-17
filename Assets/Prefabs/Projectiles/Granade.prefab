@@ -156,6 +156,8 @@ MonoBehaviour:
   bulletsCount: 10
   bulletsSpeed: 10
   explodeOnPlayerTouch: 1
+  explosionPrefab: {fileID: 8584414912468207456, guid: 2127b6e5ea3797d458934ea21ece31f5, type: 3}
+  explosionScale: 0.5
 --- !u!1 &5869249436780908503
 GameObject:
   m_ObjectHideFlags: 0

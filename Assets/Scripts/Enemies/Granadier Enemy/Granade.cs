@@ -22,6 +22,9 @@ public class Grenade : MonoBehaviour
     [Header("Explode on touch")]
     [SerializeField] private bool explodeOnPlayerTouch = true;
 
+    [SerializeField] private GameObject explosionPrefab;
+    [SerializeField] private float explosionScale = 0.5f; // mniejszy niż kamikaze
+
     private float startTime;
     private bool exploded;
 
@@ -89,6 +92,12 @@ public class Grenade : MonoBehaviour
     {
         if (exploded) return;
         exploded = true;
+
+        if (explosionPrefab)
+        {
+            GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            explosion.transform.localScale = Vector3.one * explosionScale;
+        }
 
         if (shrapnelBulletPrefab)
         {
