@@ -11,6 +11,7 @@ public class PlayerWeaponManager : MonoBehaviour
     [SerializeField] private WeaponBase weaponSlot2;
 
     private WeaponBase currentWeapon;
+    [SerializeField] private PlayerMovementV2 movement;
 
     private void Start()
     {
@@ -28,7 +29,10 @@ public class PlayerWeaponManager : MonoBehaviour
 
         // strzelanie (LPM)
         if (currentWeapon != null && Mouse.current != null && Mouse.current.leftButton.isPressed)
-            currentWeapon.TryShoot();
+            if (!movement.IsDashing)
+            {
+                currentWeapon.TryShoot();
+            }
     }
 
     public void Equip(WeaponBase weaponPrefab)

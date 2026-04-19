@@ -15,7 +15,7 @@ public class EnemyBullet : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // tutaj możesz dodać obrażenia
-            // other.GetComponent<PlayerHealth>().TakeDamage(damage);
+            other.GetComponent<PlayerHealth>().TakeDamage(damage);
 
             Destroy(gameObject);
         }

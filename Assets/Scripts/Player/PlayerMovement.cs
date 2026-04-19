@@ -1,8 +1,15 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IPlayerMovement
 {
     public float speed = 7.5f;
+
+    public float MoveSpeed
+    {
+        get => speed;
+        set => speed = value;
+    }
+
     private Rigidbody2D rb;
     private Vector2 input;
     private Vector2 lastDirection = Vector2.right;

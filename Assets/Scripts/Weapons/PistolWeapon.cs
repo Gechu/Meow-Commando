@@ -21,7 +21,7 @@ public class PistolWeapon : WeaponBase
         if (!bulletPrefab || !firePoint) return;
         if (Mouse.current == null || cam == null) return;
 
-        nextShotTime = Time.time + timeBetweenShots;
+        nextShotTime = Time.time + (timeBetweenShots * FireRateMultiplier);
 
         Vector2 mouseScreen = Mouse.current.position.ReadValue();
         Vector3 mouseWorld = cam.ScreenToWorldPoint(new Vector3(mouseScreen.x, mouseScreen.y, 0f));
@@ -34,16 +34,24 @@ public class PistolWeapon : WeaponBase
 
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        if (rb) rb.linearVelocity = dir * bulletSpeed;
+
+        if (rb)
+            rb.linearVelocity = dir * bulletSpeed * BulletSpeedMultiplier;
     }
 
     private static Vector2 ApplySpread(Vector2 dir, float spread)
     {
         if (spread <= 0f) return dir;
+
         float a = Random.Range(-spread, spread);
         float rad = a * Mathf.Deg2Rad;
+
         float sin = Mathf.Sin(rad);
         float cos = Mathf.Cos(rad);
-        return new Vector2(cos * dir.x - sin * dir.y, sin * dir.x + cos * dir.y);
+
+        return new Vector2(
+            cos * dir.x - sin * dir.y,
+            sin * dir.x + cos * dir.y
+        );
     }
 }

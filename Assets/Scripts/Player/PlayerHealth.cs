@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private PlayerMovement movement;
+    private IPlayerMovement movement;
+    public DeathManager deathScreen;
     public HealthUI healthUI;
     public int maxHP = 3;
     public int currentHP;
@@ -12,26 +13,28 @@ public class PlayerHealth : MonoBehaviour
         currentHP = maxHP;
         healthUI.CreateHearts(maxHP);
         healthUI.UpdateHearts(currentHP);
-        movement = GetComponent<PlayerMovement>();
+        movement = GetComponent<IPlayerMovement>();
     }
 
     public void TakeDamage(int amount)
     {
         if (movement != null && movement.IsInvincible)
             return;
-
-        currentHP -= amount;
-
-        if (currentHP < 0)
-            currentHP = 0;
-
-        healthUI.UpdateHearts(currentHP);
-
-        Debug.Log("HP: " + currentHP);
-
-        if (currentHP == 0)
+        else
         {
-            Die();
+            currentHP -= amount;
+
+            if (currentHP < 0)
+                currentHP = 0;
+
+            healthUI.UpdateHearts(currentHP);
+
+            Debug.Log("HP: " + currentHP);
+
+            if (currentHP == 0)
+            {
+                Die();
+            }
         }
     }
 
@@ -68,6 +71,10 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         Debug.Log("Gracz umar�");
-        // jaka� animacja, restart poziomu, czy jaki� death screen czy co�
+
+        if (deathScreen != null)
+        {
+            deathScreen.Die();
+        }
     }
 }

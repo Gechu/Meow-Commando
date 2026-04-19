@@ -318,6 +318,7 @@ MonoBehaviour:
   weaponMount: {fileID: 8740755535473700546}
   weaponSlot1: {fileID: 3740063781291813705, guid: 3bdb44c06b5287a488ea4588ee89a8ad, type: 3}
   weaponSlot2: {fileID: 3740063781291813705, guid: 567999bf2ea305f46aa334c9d8373baf, type: 3}
+  movement: {fileID: 969416527886032008}
 --- !u!1 &8865497255373062973
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,6 +333,9 @@ GameObject:
   - component: {fileID: 6843657967765558985}
   - component: {fileID: 969416527886032008}
   - component: {fileID: 4636262588750564971}
+  - component: {fileID: -7419684352436868735}
+  - component: {fileID: -8421191136702742987}
+  - component: {fileID: 9018413527074813072}
   m_Layer: 3
   m_Name: PlayerV2
   m_TagString: Player
@@ -448,6 +452,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovementV2
   moveSpeed: 5
+  dashForce: 15
+  dashTime: 0.3
+  invincibilityTime: 0.35
 --- !u!114 &4636262588750564971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -463,3 +470,49 @@ MonoBehaviour:
   animator: {fileID: 0}
   rb: {fileID: 0}
   speedDeadZone: 0.05
+--- !u!114 &-7419684352436868735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8865497255373062973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa23f117f8387594589d712db07a0081, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  healthUI: {fileID: 0}
+  maxHP: 3
+  currentHP: 0
+--- !u!114 &-8421191136702742987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8865497255373062973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c613dfab3bb178b4bbcaab3c93e1f56b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CatnipBehavior
+  catnipCount: 0
+  duration: 3
+  speedMultiplier: 2
+  fireRateMultiplier: 0.5
+  bulletSpeedMultiplier: 1.5
+  ui: {fileID: 0}
+--- !u!114 &9018413527074813072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8865497255373062973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bd043193af32ca44a9030ecd96b14df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStatSystem
+  baseMoveSpeed: 5
