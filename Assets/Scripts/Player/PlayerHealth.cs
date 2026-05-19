@@ -10,10 +10,14 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        currentHP = maxHP;
+        movement = GetComponent<IPlayerMovement>();
+
+        // Wczytaj dane gracza
+        maxHP = PlayerDataManager.Instance.maxHP;
+        currentHP = PlayerDataManager.Instance.currentHP;
+
         healthUI.CreateHearts(maxHP);
         healthUI.UpdateHearts(currentHP);
-        movement = GetComponent<IPlayerMovement>();
     }
 
     public void TakeDamage(int amount)
@@ -23,6 +27,7 @@ public class PlayerHealth : MonoBehaviour
         else
         {
             currentHP -= amount;
+            PlayerDataManager.Instance.currentHP = currentHP;
 
             if (currentHP < 0)
                 currentHP = 0;
@@ -46,7 +51,11 @@ public class PlayerHealth : MonoBehaviour
         currentHP += amount;
 
         if (currentHP > maxHP)
+        {
             currentHP = maxHP;
+        }
+
+        PlayerDataManager.Instance.currentHP = currentHP;
 
         healthUI.UpdateHearts(currentHP);
 
@@ -57,6 +66,10 @@ public class PlayerHealth : MonoBehaviour
     {
         maxHP += amount;
         currentHP = maxHP;
+
+        PlayerDataManager.Instance.maxHP = maxHP;
+        PlayerDataManager.Instance.currentHP = currentHP;
+
         healthUI.UpdateHearts(currentHP);
     }
 

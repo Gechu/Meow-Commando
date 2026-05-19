@@ -3,9 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void StartGame()
+    public void NewGame()
     {
-        SceneManager.LoadScene("Default");
+        PlayerDataManager.Instance.LoadDefaults();
+        SceneManager.LoadScene("Intro_Cutscene");
+    }
+
+    public void ContinueGame()
+    {
+        SaveSystem.LoadGame();
+        // SceneManager.LoadScene("Default");
     }
 
     public void QuitGame()

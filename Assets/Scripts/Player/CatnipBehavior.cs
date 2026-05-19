@@ -24,6 +24,8 @@ public class CatnipBehavior : MonoBehaviour
         if (ui == null)
             ui = FindFirstObjectByType<CatnipUI>();
 
+        catnipCount = PlayerDataManager.Instance.catnipCount;
+
         ui?.UpdateUI(catnipCount);
     }
 
@@ -39,13 +41,21 @@ public class CatnipBehavior : MonoBehaviour
 
     public void AddCatnip(int amount)
     {
-        catnipCount += amount;
+        PlayerDataManager.Instance.catnipCount += amount;
+
+        catnipCount = PlayerDataManager.Instance.catnipCount;
+
         ui?.UpdateUI(catnipCount);
     }
 
     void ActivateCatnip()
     {
-        catnipCount--;
+        if (PlayerDataManager.Instance.catnipCount <= 0 || isActive)
+            return;
+
+        PlayerDataManager.Instance.catnipCount--;
+
+        catnipCount = PlayerDataManager.Instance.catnipCount;
         ui?.UpdateUI(catnipCount);
 
         isActive = true;

@@ -34,6 +34,8 @@ public class EnemyHP : MonoBehaviour
     {
         dead = true;
 
+        GetComponent<EnemyDeathNotifier>()?.NotifyDeath();
+
         if (deathExplosionPrefab)
             Instantiate(deathExplosionPrefab, transform.position, Quaternion.identity);
 
