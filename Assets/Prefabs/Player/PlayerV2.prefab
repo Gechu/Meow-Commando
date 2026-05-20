@@ -337,7 +337,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerWeaponManager
   weaponMount: {fileID: 8740755535473700546}
   weaponSlot1: {fileID: 3740063781291813705, guid: 3bdb44c06b5287a488ea4588ee89a8ad, type: 3}
-  weaponSlot2: {fileID: 3740063781291813705, guid: 567999bf2ea305f46aa334c9d8373baf, type: 3}
+  weaponSlot2: {fileID: 5569662603184388996, guid: 567999bf2ea305f46aa334c9d8373baf, type: 3}
+  weaponSlot3: {fileID: 7646903891584580056, guid: 93217fd43ba345649b2018a6f941f140, type: 3}
   movement: {fileID: 969416527886032008}
 --- !u!1 &8865497255373062973
 GameObject:
