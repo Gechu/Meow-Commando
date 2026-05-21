@@ -13,6 +13,9 @@ public class PlayerMovementV2 : MonoBehaviour, IPlayerMovement
         set => moveSpeed = value;
     }
 
+    // DODANE: Zmienna, do której lód będzie dodawał prędkość
+    public float BonusSpeed = 0f;
+
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private Vector2 lastDirection = Vector2.right;
@@ -84,7 +87,8 @@ public class PlayerMovementV2 : MonoBehaviour, IPlayerMovement
         }
         else
         {
-            rb.linearVelocity = moveInput * stats.GetMoveSpeed();
+            // ZMIENIONE: Dodajemy nasz BonusSpeed do bazowej prędkości wyciąganej ze statystyk
+            rb.linearVelocity = moveInput * (stats.GetMoveSpeed() + BonusSpeed);
         }
     }
 

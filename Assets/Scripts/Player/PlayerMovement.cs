@@ -91,4 +91,14 @@ public class PlayerMovement : MonoBehaviour, IPlayerMovement
             lastDirection = Vector2.right;
         }
     }
+
+    public void BoostSpeed(float amount)
+    {
+        speed += amount; 
+    }
+
+    public void ResetSpeed(float amount)
+    {
+        speed -= amount;
+    }
 }

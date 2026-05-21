@@ -119,6 +119,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &67063713
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 51.41026
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -16.128141
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8767381394786173000, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_Name
+      value: Ice_Booster (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
 --- !u!1001 &197749913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -508,6 +565,120 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24eb7387ba76c6940bd2fdfb6200ad68, type: 3}
+--- !u!1001 &695684711
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 34.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8767381394786173000, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_Name
+      value: Ice_Booster (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+--- !u!1001 &756402638
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8767381394786173000, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_Name
+      value: Ice_Booster (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
 --- !u!1001 &789844063
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1241,6 +1412,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2317704937093256855, guid: 9c687b0d0d6a2f34bb20fde615bde72b, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 2419358855779719461, guid: 9c687b0d0d6a2f34bb20fde615bde72b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.4668455
@@ -2497,6 +2672,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9b7e563f4525e147abf5a14439f1b89, type: 3}
+--- !u!1001 &4016210185550044672
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945021882045035097, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8767381394786173000, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
+      propertyPath: m_Name
+      value: Ice_Booster
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8269b476f79250840aed0522b24d8be3, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2504,6 +2736,7 @@ SceneRoots:
   - {fileID: 1144250899}
   - {fileID: 2070589947}
   - {fileID: 1226097666}
+  - {fileID: 4016210185550044672}
   - {fileID: 789844063}
   - {fileID: 197749913}
   - {fileID: 1180152698}
@@ -2530,3 +2763,6 @@ SceneRoots:
   - {fileID: 1663490235}
   - {fileID: 1159790597}
   - {fileID: 912281381}
+  - {fileID: 756402638}
+  - {fileID: 695684711}
+  - {fileID: 67063713}
