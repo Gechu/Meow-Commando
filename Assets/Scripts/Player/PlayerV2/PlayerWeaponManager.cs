@@ -10,6 +10,8 @@ public class PlayerWeaponManager : MonoBehaviour
     [SerializeField] private WeaponBase weaponSlot1;
     [SerializeField] private WeaponBase weaponSlot2;
     [SerializeField] private WeaponBase weaponSlot3;
+    [SerializeField] private WeaponBase weaponSlot4;
+    [SerializeField] private WeaponBase weaponSlot5;
 
     private WeaponBase currentWeapon;
     [SerializeField] private PlayerMovementV2 movement;
@@ -21,12 +23,14 @@ public class PlayerWeaponManager : MonoBehaviour
 
     private void Update()
     {
-        // TEST: zmiana broni 1/2
+        // TEST: zmiana broni 
         if (Keyboard.current != null)
         {
             if (Keyboard.current.digit1Key.wasPressedThisFrame) Equip(weaponSlot1);
             if (Keyboard.current.digit2Key.wasPressedThisFrame) Equip(weaponSlot2);
             if (Keyboard.current.digit3Key.wasPressedThisFrame) Equip(weaponSlot3);
+            if (Keyboard.current.digit4Key.wasPressedThisFrame) Equip(weaponSlot4);
+            if (Keyboard.current.digit5Key.wasPressedThisFrame) Equip(weaponSlot5);
         }
 
         // strzelanie (LPM)

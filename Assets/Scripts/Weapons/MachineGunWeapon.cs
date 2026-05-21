@@ -1,57 +1,38 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class MachineGunWeapon : WeaponBase
+public class MachineGunWeapon : RangedWeaponBase
 {
-    [SerializeField] private Camera cam;
-    [SerializeField] private float bulletSpeed = 12f;
-    [SerializeField] private float timeBetweenShots = 0.18f;
-    [SerializeField] private float spreadAngle = 2f;
+    [Header("Recoil")]
+    [SerializeField] private float recoilIncreasePerShot = 0.6f;
+    [SerializeField] private float recoilMax = 10f;
+    [SerializeField] private float recoilRecoverPerSec = 8f;
 
-    private float nextShotTime;
+    private float recoil;
 
-    private void Awake()
+    protected override void Awake()
     {
-        if (!cam) cam = Camera.main;
+        base.Awake();
+        magazineSize = 30;
+        reloadTime = 1.9f;
+
+        bulletSpeed = 15f;
+        timeBetweenShots = 0.10f; // 10 strzałów/s
+        spreadAngle = 3.0f;       // bazowy
     }
 
-    public override void TryShoot()
+    private void Update()
     {
-        if (Time.time < nextShotTime) return;
-        if (!bulletPrefab || !firePoint) return;
-        if (Mouse.current == null || cam == null) return;
-
-        nextShotTime = Time.time + (timeBetweenShots * FireRateMultiplier);
-
-        Vector2 mouseScreen = Mouse.current.position.ReadValue();
-        Vector3 mouseWorld = cam.ScreenToWorldPoint(new Vector3(mouseScreen.x, mouseScreen.y, 0f));
-        mouseWorld.z = firePoint.position.z;
-
-        Vector2 dir = (mouseWorld - firePoint.position);
-        if (dir.sqrMagnitude < 0.0001f) return;
-
-        dir = ApplySpread(dir.normalized, spreadAngle);
-
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-
-        if (rb)
-            rb.linearVelocity = dir * bulletSpeed * BulletSpeedMultiplier;
+        // recoil wraca powoli w dół jak nie strzelasz
+        recoil = Mathf.MoveTowards(recoil, 0f, recoilRecoverPerSec * Time.deltaTime);
     }
 
-    private static Vector2 ApplySpread(Vector2 dir, float spread)
+    protected override void Fire(Vector2 aimDir)
     {
-        if (spread <= 0f) return dir;
+        float currentSpread = Mathf.Min(recoilMax, spreadAngle + recoil);
+        Vector2 dir = WeaponUtils.ApplySpread(aimDir, currentSpread);
 
-        float a = Random.Range(-spread, spread);
-        float rad = a * Mathf.Deg2Rad;
+        WeaponUtils.SpawnBullet(bulletPrefab, firePoint, dir, bulletSpeed * BulletSpeedMultiplier);
 
-        float sin = Mathf.Sin(rad);
-        float cos = Mathf.Cos(rad);
-
-        return new Vector2(
-            cos * dir.x - sin * dir.y,
-            sin * dir.x + cos * dir.y
-        );
+        recoil += recoilIncreasePerShot;
     }
 }

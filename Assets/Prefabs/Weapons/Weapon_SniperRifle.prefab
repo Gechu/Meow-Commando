@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 321526954603146100}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.85, y: 0.2, z: 0}
+  m_LocalPosition: {x: 0.65, y: 0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 208726268552540788, guid: 732b8955b696c5646b8f0e5e0649dbf0, type: 3}
+  m_Sprite: {fileID: -785661072740433442, guid: 04ed0d603f30f694e8a8576746c0965c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -116,7 +116,7 @@ Transform:
   m_GameObject: {fileID: 595146243616563673}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.35, y: 0.5, z: 0}
+  m_LocalPosition: {x: 2.45, y: 0.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -131,9 +131,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3504061664260245005}
-  - component: {fileID: 7646903891584580056}
+  - component: {fileID: 675140509134083320}
   m_Layer: 0
-  m_Name: Weapon_MachineGun
+  m_Name: Weapon_SniperRifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,7 +156,7 @@ Transform:
   - {fileID: 8445594985187560312}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7646903891584580056
+--- !u!114 &675140509134083320
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,9 +165,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4598631718392678689}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08a1cffc733f1a64eb5dd7e090234939, type: 3}
+  m_Script: {fileID: 11500000, guid: d03b79fbb3d143f49bae3fa9dad28ad8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MachineGunWeapon
+  m_EditorClassIdentifier: Assembly-CSharp::SniperRifleWeapon
   firePoint: {fileID: 8445594985187560312}
   bulletPrefab: {fileID: 2431276257079418612, guid: 2dc2c19932c5f7b4a891438b2a3a8541, type: 3}
   cam: {fileID: 0}
