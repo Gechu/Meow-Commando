@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 571096931946722163}
-  - component: {fileID: 3740063781291813705}
+  - component: {fileID: 5569662603184388996}
   m_Layer: 12
-  m_Name: Weapon_Pistol
+  m_Name: Weapon_UZI
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 9200158382137917928}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3740063781291813705
+--- !u!114 &5569662603184388996
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,9 +43,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2106114760958182808}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0229a84ebc1f88b41b97bcaa35ca00e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 05942ff88f9d65d4cb073af52c4f4b09, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PistolWeapon
+  m_EditorClassIdentifier: Assembly-CSharp::UZIWeapon
   firePoint: {fileID: 9200158382137917928}
   bulletPrefab: {fileID: 2431276257079418612, guid: 2dc2c19932c5f7b4a891438b2a3a8541, type: 3}
   cam: {fileID: 0}
@@ -78,7 +78,7 @@ Transform:
   m_GameObject: {fileID: 5141616398266496818}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 0.25, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -133,12 +133,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -531508081219229724, guid: 44bb44c54ae47ab449c9b78774b92575, type: 3}
+  m_Sprite: {fileID: -6552609014912514588, guid: 0507762b4cf736143a71b9ba7632ed3d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.72, y: 1.41}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -168,7 +168,7 @@ Transform:
   m_GameObject: {fileID: 5536446478259859469}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.15, y: 0.67, z: 0}
+  m_LocalPosition: {x: 1.35, y: 0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

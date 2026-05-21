@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 7592342285400371629}
   - component: {fileID: 3345460476091930942}
   - component: {fileID: 3188839524554473028}
+  - component: {fileID: 9155242618583787832}
   m_Layer: 3
   m_Name: Visual
   m_TagString: Untagged
@@ -147,6 +148,25 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &9155242618583787832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2317704937093256855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9284872dd60a9c64480e01e884f6c601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerIdleRandomAnim
+  animator: {fileID: 3188839524554473028}
+  rb: {fileID: 0}
+  minDelay: 3
+  maxDelay: 8
+  speedDeadZone: 0.05
+  isMovingParam: IsMoving
+  windTriggerParam: PlayWind
 --- !u!1 &2514849422029156192
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,7 +337,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerWeaponManager
   weaponMount: {fileID: 8740755535473700546}
   weaponSlot1: {fileID: 3740063781291813705, guid: 3bdb44c06b5287a488ea4588ee89a8ad, type: 3}
-  weaponSlot2: {fileID: 3740063781291813705, guid: 567999bf2ea305f46aa334c9d8373baf, type: 3}
+  weaponSlot2: {fileID: 5569662603184388996, guid: 567999bf2ea305f46aa334c9d8373baf, type: 3}
+  weaponSlot3: {fileID: 7646903891584580056, guid: 93217fd43ba345649b2018a6f941f140, type: 3}
+  weaponSlot4: {fileID: 9056351981172759449, guid: f71b98d388167c24587e955ac2637281, type: 3}
+  weaponSlot5: {fileID: 675140509134083320, guid: 9157cd52cce98c84682d325ebe7175e9, type: 3}
   movement: {fileID: 969416527886032008}
 --- !u!1 &8865497255373062973
 GameObject:
@@ -482,6 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa23f117f8387594589d712db07a0081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  deathScreen: {fileID: 0}
   healthUI: {fileID: 0}
   maxHP: 3
   currentHP: 0

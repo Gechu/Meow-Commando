@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class PistolWeapon : RangedWeaponBase
+public class UZIWeapon : RangedWeaponBase
 {
     protected override void Awake()
     {
         base.Awake();
-        magazineSize = 10;
-        reloadTime = 1.1f;
+        magazineSize = 30;
+        reloadTime = 1.6f;
 
-        bulletSpeed = 14f;
-        timeBetweenShots = 0.28f;   // ~3.6 strzału/s
-        spreadAngle = 1.5f;         // lekki rozrzut
+        bulletSpeed = 13f;
+        timeBetweenShots = 0.08f;   // ~12.5 strzału/s
+        spreadAngle = 5.0f;         // UZI ma “spray”
     }
 
     protected override void Fire(Vector2 aimDir)
