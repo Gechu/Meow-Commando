@@ -2339,6 +2339,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground - NavMesh
       objectReference: {fileID: 0}
+    - target: {fileID: 6989193749058898326, guid: 4c99cf6580b32574ebec02d6d09566b4, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 2018f8c63dcc4d440b23a1a31ffdfcba, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
