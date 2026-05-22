@@ -1901,12 +1901,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebc0053bc79c2b04f8a6e73096ed2321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutorialDoor
-  unlocked: 0
+  unlocked: 1
   spriteRenderer: {fileID: 2056535325}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   unlockedColor: {r: 1, g: 1, b: 1, a: 1}
   interactPrompt: {fileID: 2080869956}
-  nextSceneName: Tutorial_Shooting
+  nextSceneName: Level1
 --- !u!58 &2056535324
 CircleCollider2D:
   m_ObjectHideFlags: 0
