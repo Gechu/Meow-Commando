@@ -58,7 +58,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1.5, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5846734926467262046}
@@ -112,8 +112,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.15690637, g: 0.23844855, b: 0.8113208, a: 1}
+  m_Sprite: {fileID: 1443288525041258662, guid: 3eecf575adaef9a4a902f509cda87276, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -190,7 +190,7 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.7, y: 2.3}
+  m_Size: {x: 2, y: 2.7}
   m_Direction: 0
 --- !u!114 &6225118119338143735
 MonoBehaviour:
@@ -216,7 +216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5846734926467262046}
   - component: {fileID: 5490904036440735792}
-  - component: {fileID: 6582813756822080684}
+  - component: {fileID: 3430034470523832230}
   - component: {fileID: 3822068885959494372}
   - component: {fileID: 4657899716924060891}
   - component: {fileID: 5383973687580735988}
@@ -272,8 +272,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &6582813756822080684
-BoxCollider2D:
+--- !u!70 &3430034470523832230
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -306,18 +306,9 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1.5}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.02, y: -0.2}
+  m_Size: {x: 1, y: 2.1}
+  m_Direction: 0
 --- !u!195 &3822068885959494372
 NavMeshAgent:
   m_ObjectHideFlags: 0
