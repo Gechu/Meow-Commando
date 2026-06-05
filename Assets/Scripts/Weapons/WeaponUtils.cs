@@ -32,11 +32,20 @@ public static class WeaponUtils
     }
 
     public static void SpawnBullet(GameObject bulletPrefab, Transform firePoint, Vector2 dir, float bulletSpeed)
-    {
-        if (!bulletPrefab || !firePoint) return;
+{
+    if (!bulletPrefab || !firePoint) return;
 
-        GameObject bullet = Object.Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        if (rb) rb.linearVelocity = dir * bulletSpeed;
-    }
+    GameObject bullet = Object.Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+
+    // Nadajemy prędkość
+    Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+    if (rb)
+        rb.linearVelocity = dir.normalized * bulletSpeed;
+
+    // Obracamy pocisk w kierunku lotu
+    float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+    bullet.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+}
+
 }

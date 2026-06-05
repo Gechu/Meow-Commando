@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Grenade
   visual: {fileID: 6999190955153139580}
-  shrapnelBulletPrefab: {fileID: 6714932768004369664, guid: 6cf0709665ea1a04c96804a0c98ef5e7, type: 3}
+  shrapnelBulletPrefab: {fileID: 6714932768004369664, guid: 48b030cf35970bc4daf9a33b30800773, type: 3}
   totalFlightTime: 1.4
   visualBounces: 2
   height: 1

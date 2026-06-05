@@ -453,7 +453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShootingLOS
   bulletPrefab: {fileID: 6714932768004369664, guid: 6cf0709665ea1a04c96804a0c98ef5e7, type: 3}
   firePoint: {fileID: 4241304718055301577}
-  bulletSpeed: 7
+  bulletSpeed: 10
   shootRange: 14
   spreadAngle: 10
   timeBetweenShots: 2

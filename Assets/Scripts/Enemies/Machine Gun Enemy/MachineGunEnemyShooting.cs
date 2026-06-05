@@ -125,5 +125,9 @@ public class MachineGunEnemyShooting : MonoBehaviour
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         if (rb)
             rb.linearVelocity = finalDir * bulletSpeed;
+
+        // Obracamy pocisk w kierunku lotu
+        float rotAngle = Mathf.Atan2(finalDir.y, finalDir.x) * Mathf.Rad2Deg;
+        bullet.transform.rotation = Quaternion.Euler(0f, 0f, rotAngle);
     }
 }
