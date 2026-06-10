@@ -8,6 +8,7 @@ public class MinigunBossShooting : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private GameObject grenadePrefab;
     [SerializeField] private MinigunBossAI bossAI;
+    [SerializeField] private BossGunController armController;
 
     private Transform player;
 
@@ -244,7 +245,8 @@ public class MinigunBossShooting : MonoBehaviour
 
     private void SpawnBullet(Vector2 dir, float speed)
     {
-        GameObject b = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+        Transform fp = armController.GetFirePoint();
+        GameObject b = Instantiate(bulletPrefab, fp.position, Quaternion.identity);
         Rigidbody2D rb = b.GetComponent<Rigidbody2D>();
 
         if (rb)
