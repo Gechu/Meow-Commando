@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BulletDamage : MonoBehaviour
 {
-    [SerializeField] private int damage = 1;
+    [SerializeField] private float damage = 1;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,14 +13,25 @@ public class BulletDamage : MonoBehaviour
             return;
         }
 
-        if (collision.CompareTag("Enemy"))
+        // najpierw sprawdź czy to boss
+        BossHealth bossHp = collision.GetComponentInParent<BossHealth>();
+        if (bossHp != null)
         {
-            // Spróbuj znaleźć HP na trafionym obiekcie albo jego rodzicu
-            EnemyHP hp = collision.GetComponentInParent<EnemyHP>();
-            if (hp != null)
-                hp.TakeDamage(damage);
-
+            bossHp.TakeDamage(damage);
             Destroy(gameObject);
+            return;
         }
+
+        // potem zwykły enemy (Twoje istniejące EnemyHP)
+        EnemyHP enemyHp = collision.GetComponentInParent<EnemyHP>();
+        if (enemyHp != null)
+        {
+            enemyHp.TakeDamage((int)damage);
+            Destroy(gameObject);
+            return;
+        }
+
+        // opcjonalnie: znikaj po trafieniu w inne obiekty z tagiem "Obstacle" itp.
     }
+
 }

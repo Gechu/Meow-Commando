@@ -12,10 +12,6 @@ public class MinigunBossShooting : MonoBehaviour
 
     private Transform player;
 
-    // -----------------------------
-    //  PHASE SETTINGS
-    // -----------------------------
-
     [Header("Minigun Spray Phase")]
     [SerializeField] private float sprayBulletSpeed = 10f;
     [SerializeField] private float sprayFireRate = 0.07f;
@@ -33,17 +29,9 @@ public class MinigunBossShooting : MonoBehaviour
     [SerializeField] private int arcShotgunSalvos = 2;
     [SerializeField] private float arcShotgunSalvoDelay = 0.25f;
 
-    // -----------------------------
-    //  TIMERS
-    // -----------------------------
-
     private float sprayNextShotTime;
     private float arcNextShotTime;
     private Coroutine arcRoutine;
-
-    // -----------------------------
-    //  LOS + LAST SEEN SYSTEM
-    // -----------------------------
 
     [Header("Line of Sight (2D)")]
     [SerializeField] private LayerMask wallMask;
@@ -67,14 +55,12 @@ public class MinigunBossShooting : MonoBehaviour
     {
         if (!player) return;
 
-        // Aktualizacja last-seen
         if (HasLineOfSight2D(player.position))
         {
             lockedAimPos = player.position;
             lastSeenTime = Time.time;
         }
 
-        // Nie strzelaj w Transition
         if (currentPhase == MinigunBossAI.BossPhase.Transition)
             return;
 
@@ -136,12 +122,12 @@ public class MinigunBossShooting : MonoBehaviour
     private void UpdateGrenades()
     {
         ThrowGrenadeCircle();
-        bossAI.ForceEndPhase(); // kończymy fazę po jednym rzucie
+        bossAI.ForceEndPhase();
     }
 
     private void ThrowGrenadeCircle()
     {
-        Vector3 center = firePoint.position;
+        Vector3 center = bossAI.transform.position; // 🔥 granaty ze środka
 
         for (int i = 0; i < grenadeCount; i++)
         {

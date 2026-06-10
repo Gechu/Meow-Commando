@@ -91,7 +91,6 @@ public class MinigunBossAI : MonoBehaviour
 
         float dist = Vector2.Distance(transform.position, player.position);
 
-        // Jeśli boss już stoi
         if (isHoldingPosition)
         {
             if (dist <= resumeDistance)
@@ -103,7 +102,6 @@ public class MinigunBossAI : MonoBehaviour
             isHoldingPosition = false;
         }
 
-        // Jeśli boss powinien się zatrzymać
         if (dist <= stopDistance)
         {
             isHoldingPosition = true;
@@ -111,7 +109,6 @@ public class MinigunBossAI : MonoBehaviour
             return;
         }
 
-        // Normalny ruch
         agent.speed = sprayPhaseWalkSpeed;
         agent.SetDestination(player.position);
 
@@ -136,7 +133,7 @@ public class MinigunBossAI : MonoBehaviour
         StartPhase(BossPhase.Transition);
         yield return new WaitForSeconds(transitionDuration);
 
-        BossPhase next = (BossPhase)Random.Range(0, 3);
+        BossPhase next = GetWeightedRandomPhase();
 
         if (next == BossPhase.Grenades)
             phaseTimer = 0.1f;
@@ -148,15 +145,31 @@ public class MinigunBossAI : MonoBehaviour
         isTransitioning = false;
     }
 
+    private BossPhase GetWeightedRandomPhase()
+    {
+        int weightMinigun = 60;
+        int weightGrenades = 20;
+        int weightArc = 20;
+
+        int total = weightMinigun + weightGrenades + weightArc;
+        int roll = Random.Range(0, total);
+
+        if (roll < weightMinigun)
+            return BossPhase.MinigunSpray;
+
+        roll -= weightMinigun;
+
+        if (roll < weightGrenades)
+            return BossPhase.Grenades;
+
+        return BossPhase.ArcShotgun;
+    }
+
     private void StartPhase(BossPhase newPhase)
     {
         CurrentPhase = newPhase;
         shootingController?.OnPhaseChanged(newPhase);
     }
-
-    // ---------------------------------------------------------
-    //  FORCE END PHASE (used by grenade phase)
-    // ---------------------------------------------------------
 
     public void ForceEndPhase()
     {
