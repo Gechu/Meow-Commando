@@ -147,9 +147,9 @@ public class MinigunBossAI : MonoBehaviour
 
     private BossPhase GetWeightedRandomPhase()
     {
-        int weightMinigun = 60;
-        int weightGrenades = 20;
-        int weightArc = 20;
+        int weightMinigun = 50;
+        int weightGrenades = 25;
+        int weightArc = 25;
 
         int total = weightMinigun + weightGrenades + weightArc;
         int roll = Random.Range(0, total);

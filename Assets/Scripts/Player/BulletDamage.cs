@@ -7,7 +7,7 @@ public class BulletDamage : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // znikaj po uderzeniu w ścianę
-        if (collision.CompareTag("Wall"))
+        if (collision.CompareTag("Wall") || collision.CompareTag("Throne"))
         {
             Destroy(gameObject);
             return;

@@ -6,6 +6,7 @@ public class BossHealth : MonoBehaviour
     [Header("Health")]
     [SerializeField] private float maxHealth = 300;
     private float currentHealth;
+    public float CurrentHealth => currentHealth;
 
     [Header("Events")]
     public UnityEvent<float, float> onHealthChanged; // (current, max)
