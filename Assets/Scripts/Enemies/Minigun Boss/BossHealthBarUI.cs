@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class BossHealthBarUI : MonoBehaviour
 {
@@ -20,4 +21,24 @@ public class BossHealthBarUI : MonoBehaviour
         slider.maxValue = max;
         slider.value = max;
     }
+
+    public void HideBar()
+    {
+        StartCoroutine(FadeOut());
+    }
+
+    private IEnumerator FadeOut()
+    {
+        CanvasGroup cg = GetComponent<CanvasGroup>();
+        if (!cg) cg = gameObject.AddComponent<CanvasGroup>();
+
+        for (float t = 1f; t >= 0f; t -= Time.deltaTime)
+        {
+            cg.alpha = t;
+            yield return null;
+        }
+
+        gameObject.SetActive(false);
+    }
+
 }
