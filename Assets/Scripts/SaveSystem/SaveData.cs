@@ -5,6 +5,7 @@ public class SaveData
     public int currentHP;
 
     public int catnipCount;
+    public int coins;
 
     public string currentScene;
 }

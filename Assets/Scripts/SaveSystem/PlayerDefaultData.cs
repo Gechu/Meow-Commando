@@ -7,4 +7,5 @@ public class PlayerDefaultData : ScriptableObject
     public int defaultMaxHP = 3;
     public int defaultCurrentHP = 3;
     public int defaultCatnipCount = 0;
+    public int defaultCoins = 0;
 }

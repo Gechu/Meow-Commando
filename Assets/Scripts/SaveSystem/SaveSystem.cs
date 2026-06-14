@@ -14,6 +14,7 @@ public static class SaveSystem
         data.currentHP = PlayerDataManager.Instance.currentHP;
 
         data.catnipCount = PlayerDataManager.Instance.catnipCount;
+        data.coins = PlayerDataManager.Instance.coins;
 
         data.currentScene = SceneManager.GetActiveScene().name;
 
@@ -40,6 +41,7 @@ public static class SaveSystem
         PlayerDataManager.Instance.currentHP = data.currentHP;
 
         PlayerDataManager.Instance.catnipCount = data.catnipCount;
+        PlayerDataManager.Instance.coins = data.coins;
 
         Debug.Log("Game Loaded!");
 

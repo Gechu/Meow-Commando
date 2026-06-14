@@ -28,6 +28,7 @@ public class PlayerHealth : MonoBehaviour
         {
             currentHP -= amount;
             PlayerDataManager.Instance.currentHP = currentHP;
+            LevelRunManager.Instance?.AddDamageTaken(amount);
 
             if (currentHP < 0)
                 currentHP = 0;

@@ -230,6 +230,8 @@ MonoBehaviour:
   defaultData: {fileID: 11400000, guid: ee54f1bfbece1cd49b35a15794522658, type: 2}
   maxHP: 3
   currentHP: 3
+  catnipCount: 0
+  coins: 0
 --- !u!4 &56387286
 Transform:
   m_ObjectHideFlags: 0

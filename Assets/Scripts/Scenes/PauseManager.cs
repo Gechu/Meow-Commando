@@ -29,6 +29,8 @@ public class PauseManager : MonoBehaviour
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
 
+        LevelRunManager.Instance?.PauseTimer();
+
         isPaused = true;
     }
 
@@ -36,6 +38,8 @@ public class PauseManager : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
+
+        LevelRunManager.Instance?.ResumeTimer();
 
         isPaused = false;
     }

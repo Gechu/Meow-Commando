@@ -14,6 +14,7 @@ public class PlayerDataManager : MonoBehaviour
 
     [Header("Resources")]
     public int catnipCount;
+    public int coins;
 
     private void Awake()
     {
@@ -33,6 +34,7 @@ public class PlayerDataManager : MonoBehaviour
         maxHP = defaultData.defaultMaxHP;
         currentHP = defaultData.defaultCurrentHP;
         catnipCount = defaultData.defaultCatnipCount;
+        coins = defaultData.defaultCoins;
 
         Debug.Log("Loaded Default Player Data");
     }
