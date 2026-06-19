@@ -10,6 +10,13 @@ public class DonCorgiBossAI : MonoBehaviour
     [SerializeField] private BossHealth bossHealth;
     [SerializeField] private DonCorgiShooting shooting;
 
+    [Header("Weapons")]
+    [SerializeField] private GameObject gun1;
+    [SerializeField] private GameObject gun2;
+
+    [SerializeField] private Transform firePoint1;
+    [SerializeField] private Transform firePoint2;
+
     [Header("Settings")]
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float finalPhaseSpeedMultiplier = 1.5f;
@@ -20,7 +27,25 @@ public class DonCorgiBossAI : MonoBehaviour
 
     private void Start()
     {
+        // Startujemy z bronią nr 1
+        SetWeapon(1);
         StartCoroutine(BossCycle());
+    }
+
+    private void SetWeapon(int id)
+    {
+        if (id == 1)
+        {
+            gun1.SetActive(true);
+            gun2.SetActive(false);
+            shooting.firePoint = firePoint1;
+        }
+        else
+        {
+            gun1.SetActive(false);
+            gun2.SetActive(true);
+            shooting.firePoint = firePoint2;
+        }
     }
 
     private IEnumerator BossCycle()
@@ -35,6 +60,7 @@ public class DonCorgiBossAI : MonoBehaviour
         // --- Rundy 1–4 ---
         while (currentRound <= maxRounds && bossHealth.CurrentHealth > 0)
         {
+            SetWeapon(1); // broń nr 1
             yield return StartCoroutine(SpawnPhase());
             yield return StartCoroutine(ActivePhase());
             currentRound++;
@@ -56,7 +82,6 @@ public class DonCorgiBossAI : MonoBehaviour
 
         SpawnEnemies(enemiesToSpawn);
 
-        // Czekamy aż wszyscy przeciwnicy zginą
         while (Object.FindObjectsByType<EnemyHP>(FindObjectsSortMode.None).Length > 0)
             yield return null;
     }
@@ -67,7 +92,6 @@ public class DonCorgiBossAI : MonoBehaviour
 
         float activeTime = 9f - currentRound; // 8,7,6,5
 
-        // Wybieramy jeden losowy waypoint
         Transform target = waypoints[Random.Range(0, waypoints.Length)];
 
         float timer = 0f;
@@ -78,7 +102,6 @@ public class DonCorgiBossAI : MonoBehaviour
             yield return null;
         }
 
-        // Powrót na tron
         while (Vector2.Distance(transform.position, thronePosition.position) > 0.1f)
         {
             MoveTowards(thronePosition.position);
@@ -96,6 +119,9 @@ public class DonCorgiBossAI : MonoBehaviour
         // TODO: UI dialog — "Dobra, zrobię to sam!"
         yield return new WaitForSeconds(throneDialogueTime);
 
+        // Przełączamy na broń nr 2
+        SetWeapon(2);
+
         shooting.mode = CorgiShootMode.FinalMachineGun;
 
         float finalSpeed = moveSpeed * finalPhaseSpeedMultiplier;
@@ -104,7 +130,6 @@ public class DonCorgiBossAI : MonoBehaviour
         {
             Transform target = waypoints[Random.Range(0, waypoints.Length)];
 
-            // Ruch do waypointu
             while (Vector2.Distance(transform.position, target.position) > 0.1f)
             {
                 transform.position = Vector2.MoveTowards(
@@ -117,13 +142,10 @@ public class DonCorgiBossAI : MonoBehaviour
                 yield return null;
             }
 
-            // Zatrzymanie na 2 sekundy
             yield return new WaitForSeconds(2f);
 
-            // Spawn 3 przeciwników
             SpawnEnemiesAtPoint(target.position, 3);
 
-            // Losowy wybór trybu strzelania
             if (Random.value < 0.4f)
                 shooting.mode = CorgiShootMode.FinalWave;
             else
@@ -153,7 +175,7 @@ public class DonCorgiBossAI : MonoBehaviour
 
     private void SpawnEnemiesAtPoint(Vector2 pos, int count)
     {
-        float radius = 2f;
+        float radius = 1.5f;
 
         for (int i = 0; i < count; i++)
         {
