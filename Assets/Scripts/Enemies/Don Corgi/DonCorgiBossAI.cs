@@ -17,6 +17,10 @@ public class DonCorgiBossAI : MonoBehaviour
     [SerializeField] private Transform firePoint1;
     [SerializeField] private Transform firePoint2;
 
+    [Header("Dialog UI")]
+    [SerializeField] private GameObject dialog1UI;   // "Moi ludzie się tobą zajmą!"
+    [SerializeField] private GameObject dialog2UI;   // "Dobra, zrobię to sam!"
+
     [Header("Settings")]
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float finalPhaseSpeedMultiplier = 1.5f;
@@ -29,6 +33,11 @@ public class DonCorgiBossAI : MonoBehaviour
     {
         // Startujemy z bronią nr 1
         SetWeapon(1);
+
+        // Ukrywamy dialogi na starcie
+        dialog1UI.SetActive(false);
+        dialog2UI.SetActive(false);
+
         StartCoroutine(BossCycle());
     }
 
@@ -54,8 +63,10 @@ public class DonCorgiBossAI : MonoBehaviour
         transform.position = thronePosition.position;
         shooting.mode = CorgiShootMode.None;
 
-        // TODO: UI dialog — "Moi ludzie się tobą zajmą!"
+        // Pokazujemy dialog 1
+        dialog1UI.SetActive(true);
         yield return new WaitForSeconds(throneDialogueTime);
+        dialog1UI.SetActive(false);
 
         // --- Rundy 1–4 ---
         while (currentRound <= maxRounds && bossHealth.CurrentHealth > 0)
@@ -116,8 +127,10 @@ public class DonCorgiBossAI : MonoBehaviour
         transform.position = thronePosition.position;
         shooting.mode = CorgiShootMode.None;
 
-        // TODO: UI dialog — "Dobra, zrobię to sam!"
+        // Pokazujemy dialog 2
+        dialog2UI.SetActive(true);
         yield return new WaitForSeconds(throneDialogueTime);
+        dialog2UI.SetActive(false);
 
         // Przełączamy na broń nr 2
         SetWeapon(2);
