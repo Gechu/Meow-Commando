@@ -18,6 +18,12 @@ public static class SaveSystem
 
         data.currentScene = SceneManager.GetActiveScene().name;
 
+        data.unlockedWeapons = (bool[])PlayerDataManager.Instance.unlockedWeapons.Clone();
+
+        data.speedMultiplierBonus = PlayerDataManager.Instance.speedMultiplierBonus;
+        data.fireRateMultiplierBonus = PlayerDataManager.Instance.fireRateMultiplierBonus;
+        data.bulletSpeedMultiplierBonus = PlayerDataManager.Instance.bulletSpeedMultiplierBonus;
+
         string json = JsonUtility.ToJson(data, true);
 
         File.WriteAllText(savePath, json);
@@ -42,6 +48,12 @@ public static class SaveSystem
 
         PlayerDataManager.Instance.catnipCount = data.catnipCount;
         PlayerDataManager.Instance.coins = data.coins;
+
+        PlayerDataManager.Instance.unlockedWeapons = (bool[])data.unlockedWeapons.Clone();
+
+        PlayerDataManager.Instance.speedMultiplierBonus = data.speedMultiplierBonus;
+        PlayerDataManager.Instance.fireRateMultiplierBonus = data.fireRateMultiplierBonus;
+        PlayerDataManager.Instance.bulletSpeedMultiplierBonus = data.bulletSpeedMultiplierBonus;
 
         Debug.Log("Game Loaded!");
 

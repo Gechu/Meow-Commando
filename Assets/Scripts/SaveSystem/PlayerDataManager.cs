@@ -12,6 +12,14 @@ public class PlayerDataManager : MonoBehaviour
     public int maxHP;
     public int currentHP;
 
+    [Header("Weapons")]
+    public bool[] unlockedWeapons = new bool[5];
+
+    [Header("Upgrades")]
+    public float speedMultiplierBonus;
+    public float fireRateMultiplierBonus;
+    public float bulletSpeedMultiplierBonus;
+
     [Header("Resources")]
     public int catnipCount;
     public int coins;
@@ -33,8 +41,15 @@ public class PlayerDataManager : MonoBehaviour
     {
         maxHP = defaultData.defaultMaxHP;
         currentHP = defaultData.defaultCurrentHP;
+
         catnipCount = defaultData.defaultCatnipCount;
         coins = defaultData.defaultCoins;
+
+        unlockedWeapons = (bool[])defaultData.defaultUnlockedWeapons.Clone();
+
+        speedMultiplierBonus = defaultData.defaultSpeedMultiplierBonus;
+        fireRateMultiplierBonus = defaultData.defaultFireRateMultiplierBonus;
+        bulletSpeedMultiplierBonus = defaultData.defaultBulletSpeedMultiplierBonus;
 
         Debug.Log("Loaded Default Player Data");
     }
@@ -46,5 +61,30 @@ public class PlayerDataManager : MonoBehaviour
             SaveSystem.SaveGame();
             Debug.Log("Quick Save (F5)");
         }
+    }
+
+    public bool UnlockNextWeapon()
+    {
+        for (int i = 0; i < unlockedWeapons.Length; i++)
+        {
+            if (!unlockedWeapons[i])
+            {
+                unlockedWeapons[i] = true;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public bool AllWeaponsUnlocked()
+    {
+        foreach (bool unlocked in unlockedWeapons)
+        {
+            if (!unlocked)
+                return false;
+        }
+
+        return true;
     }
 }

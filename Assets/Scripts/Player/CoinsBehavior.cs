@@ -29,9 +29,6 @@ public class CoinsBehavior : MonoBehaviour
 
     public bool SpendCoins(int amount)
     {
-        if (PlayerDataManager.Instance.coins < amount)
-            return false;
-
         PlayerDataManager.Instance.coins -= amount;
 
         coinCount = PlayerDataManager.Instance.coins;

@@ -15,6 +15,19 @@ public class PlayerWeaponManager : MonoBehaviour
 
     private WeaponBase currentWeapon;
     [SerializeField] private PlayerMovementV2 movement;
+    private WeaponBase[] weapons;
+
+    void Awake()
+    {
+        weapons = new WeaponBase[]
+        {
+            weaponSlot1,
+            weaponSlot2,
+            weaponSlot3,
+            weaponSlot4,
+            weaponSlot5
+        };
+    }
 
     private void Start()
     {
@@ -26,19 +39,26 @@ public class PlayerWeaponManager : MonoBehaviour
         // TEST: zmiana broni 
         if (Keyboard.current != null)
         {
-            if (Keyboard.current.digit1Key.wasPressedThisFrame) Equip(weaponSlot1);
-            if (Keyboard.current.digit2Key.wasPressedThisFrame) Equip(weaponSlot2);
-            if (Keyboard.current.digit3Key.wasPressedThisFrame) Equip(weaponSlot3);
-            if (Keyboard.current.digit4Key.wasPressedThisFrame) Equip(weaponSlot4);
-            if (Keyboard.current.digit5Key.wasPressedThisFrame) Equip(weaponSlot5);
+            if (Keyboard.current.digit1Key.wasPressedThisFrame) TryEquip(0);
+            if (Keyboard.current.digit2Key.wasPressedThisFrame) TryEquip(1);
+            if (Keyboard.current.digit3Key.wasPressedThisFrame) TryEquip(2);
+            if (Keyboard.current.digit4Key.wasPressedThisFrame) TryEquip(3);
+            if (Keyboard.current.digit5Key.wasPressedThisFrame) TryEquip(4);
         }
 
         // strzelanie (LPM)
-        if (currentWeapon != null && Mouse.current != null && Mouse.current.leftButton.isPressed)
-            if (!movement.IsDashing)
-            {
-                currentWeapon.TryShoot();
-            }
+        if (currentWeapon != null && Mouse.current != null && Mouse.current.leftButton.isPressed && !movement.IsDashing)
+        {
+            currentWeapon.TryShoot();
+        }
+    }
+
+    void TryEquip(int index)
+    {
+        if (!PlayerDataManager.Instance.unlockedWeapons[index])
+            return;
+
+        Equip(weapons[index]);
     }
 
     public void Equip(WeaponBase weaponPrefab)
@@ -54,5 +74,18 @@ public class PlayerWeaponManager : MonoBehaviour
         currentWeapon.transform.localScale = Vector3.one;
 
         currentWeapon.OnEquipped();
+    }
+
+    public int GetUnlockedWeaponCount()
+    {
+        int count = 0;
+
+        foreach (bool unlocked in PlayerDataManager.Instance.unlockedWeapons)
+        {
+            if (unlocked)
+                count++;
+        }
+
+        return count;
     }
 }
