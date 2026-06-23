@@ -110,7 +110,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 6368129866772853591, guid: 59ffb18a9f98e9645b589565ac7ff007, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -276,7 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4517e4bb02e19d242867de11b2ad1199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHP
-  maxHP: 3
+  maxHP: 4.5
   deathExplosionPrefab: {fileID: 0}
 --- !u!1 &6575210850906383601
 GameObject:
@@ -357,7 +357,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: 5116717871789954264, guid: 959f227f9eddbc440a3348dd455c6948, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -440,9 +440,9 @@ MonoBehaviour:
   bulletSpeed: 10
   shootRange: 14
   spreadAngle: 10
-  timeBetweenShots: 0.2
-  burstCooldown: 2
-  numofShots: 3
+  timeBetweenShots: 0.17
+  burstCooldown: 1.3
+  numofShots: 4
   wallMask:
     serializedVersion: 2
     m_Bits: 512

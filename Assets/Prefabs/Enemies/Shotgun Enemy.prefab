@@ -111,7 +111,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: -6135822465274443546, guid: 301756dfbfab73c4793ab165de092213, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -276,18 +276,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShotgunShooting
   firePoint: {fileID: 4241304718055301577}
   bulletPrefab: {fileID: 6714932768004369664, guid: 6cf0709665ea1a04c96804a0c98ef5e7, type: 3}
-  shootRange: 9
+  shootRange: 13
   aimTime: 1
-  shotCooldown: 1.4
+  shotCooldown: 1
   cooldownJitterPercent: 0.15
   pelletsMin: 7
   pelletsMax: 10
   corePelletRatio: 0.65
-  coreSpreadAngle: 10
+  coreSpreadAngle: 20
   outerSpreadAngle: 35
-  pelletSpeedMin: 4
-  pelletSpeedMax: 7
-  pelletLifetime: 1
+  pelletSpeedMin: 7
+  pelletSpeedMax: 10
+  pelletLifetime: 1.5
 --- !u!114 &2149510438798367503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4517e4bb02e19d242867de11b2ad1199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHP
-  maxHP: 3
+  maxHP: 5.5
   deathExplosionPrefab: {fileID: 0}
 --- !u!1 &6575210850906383601
 GameObject:
@@ -402,7 +402,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2408530018317867212, guid: 48621b8b05b6eb44394e504b6a1aa566, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

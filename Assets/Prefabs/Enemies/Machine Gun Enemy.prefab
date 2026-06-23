@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8548239688671864513}
   - component: {fileID: 683757971442772178}
+  - component: {fileID: 8202363646372749748}
   m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
@@ -110,7 +111,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8948519196517965808, guid: 63d5b1b9f5ed60945bd43234318a1780, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -122,6 +123,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &8202363646372749748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3115953017508534138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7248a38b441e10e499a8bc8aca47cb92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyFacePlayerFlipX
+  playerTag: Player
+  sr: {fileID: 683757971442772178}
 --- !u!1 &4620781330544459104
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4517e4bb02e19d242867de11b2ad1199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHP
-  maxHP: 3
+  maxHP: 6
   deathExplosionPrefab: {fileID: 0}
 --- !u!1 &6575210850906383601
 GameObject:
@@ -359,7 +374,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: -6781197004312054906, guid: ba5649a7a69675540ba16351c5df3fdb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -441,11 +456,11 @@ MonoBehaviour:
   firePoint: {fileID: 4241304718055301577}
   bulletSpeed: 10
   shootRange: 16
-  shotsPerBurst: 10
-  timeBetweenShots: 0.15
+  shotsPerBurst: 15
+  timeBetweenShots: 0.12
   burstCooldown: 2
   cooldownJitterPercent: 0.15
-  baseSpreadAngle: 14
+  baseSpreadAngle: 15
   recoilPerShot: 0.7
   wallMask:
     serializedVersion: 2

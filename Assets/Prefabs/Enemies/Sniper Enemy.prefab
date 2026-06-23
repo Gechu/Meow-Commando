@@ -111,7 +111,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: -5360950688186293204, guid: 83ce10d6626b9b74ebc8063ba1df51d8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -302,7 +302,7 @@ MonoBehaviour:
   laser: {fileID: 2042664918572917095}
   bulletSpeed: 45
   cooldownAfterShot: 1
-  chargeTime: 2
+  chargeTime: 1.5
   wallMask:
     serializedVersion: 2
     m_Bits: 512
@@ -510,7 +510,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: 2639476247901840346, guid: 89f127aafb6dc1b408e1c05f26cf61a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class EnemyHP : MonoBehaviour
 {
-    [SerializeField] private int maxHP = 3;
+    [SerializeField] private float maxHP = 3;
 
     [Header("On Death (optional)")]
     [SerializeField] private GameObject deathExplosionPrefab;
 
-    private int currentHP;
+    private float currentHP;
     private bool dead;
 
     private void Awake()
@@ -15,7 +15,7 @@ public class EnemyHP : MonoBehaviour
         currentHP = maxHP;
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         if (dead) return;
         if (amount <= 0) return;

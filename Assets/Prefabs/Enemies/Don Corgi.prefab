@@ -125,7 +125,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: -6308315520562188517, guid: 9ba97449fe9f4cf46ad77e6d479eee65, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -259,6 +259,8 @@ MonoBehaviour:
   gun2: {fileID: 6337431353061584735}
   firePoint1: {fileID: 4241304718055301577}
   firePoint2: {fileID: 8915612336043153477}
+  dialog1UI: {fileID: 0}
+  dialog2UI: {fileID: 0}
   moveSpeed: 2
   finalPhaseSpeedMultiplier: 1.5
   throneDialogueTime: 5
@@ -361,7 +363,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: 3068883685801097987, guid: fb460034e556d284d8fb2d8ddcdecd39, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -484,7 +486,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: -4814250321976093400, guid: b5c28a9d16c5bff4992d380d4f4bd6d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

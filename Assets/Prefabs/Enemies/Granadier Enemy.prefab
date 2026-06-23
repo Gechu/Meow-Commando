@@ -80,7 +80,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 725732787937037233, guid: a0faad7d6feb8b14ab3f03cff0a3830d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -185,7 +185,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 4
   m_MaskInteraction: 0
   m_Sprite: {fileID: -8535769107507300308, guid: 471cf83517ce0364ba0b96896d9b034d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -303,7 +303,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1
-  m_Speed: 3
+  m_Speed: 4
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 0
@@ -398,7 +398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4517e4bb02e19d242867de11b2ad1199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHP
-  maxHP: 3
+  maxHP: 6
   deathExplosionPrefab: {fileID: 0}
 --- !u!1 &6892613184142341574
 GameObject:
@@ -479,7 +479,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2617948109977359131, guid: 39ba6d5f597f0d242a70bc3df5133c27, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

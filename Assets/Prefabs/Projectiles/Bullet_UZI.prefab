@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1136188027963594422}
   - component: {fileID: -3358532462022989316}
   m_Layer: 6
-  m_Name: Bullet
+  m_Name: Bullet_UZI
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,4 +169,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4c49cbc37965724f935a6045c7eb12e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletDamage
-  damage: 1
+  damage: 0.4

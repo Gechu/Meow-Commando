@@ -26,7 +26,7 @@ public class BulletDamage : MonoBehaviour
         EnemyHP enemyHp = collision.GetComponentInParent<EnemyHP>();
         if (enemyHp != null)
         {
-            enemyHp.TakeDamage((int)damage);
+            enemyHp.TakeDamage(damage);
             Destroy(gameObject);
             return;
         }
