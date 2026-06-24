@@ -14,3 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDefaultData
   defaultMaxHP: 3
   defaultCurrentHP: 3
+  defaultCatnipCount: 0
+  defaultCoins: 0
+  defaultUnlockedWeapons: 0100000000
+  defaultSpeedMultiplierBonus: 0
+  defaultFireRateMultiplierBonus: 0
+  defaultBulletSpeedMultiplierBonus: 0

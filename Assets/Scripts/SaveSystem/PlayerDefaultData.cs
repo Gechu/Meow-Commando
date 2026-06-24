@@ -14,11 +14,11 @@ public class PlayerDefaultData : ScriptableObject
     [Header("Weapons")]
     public bool[] defaultUnlockedWeapons = new bool[5]
     {
-        true,   // Bro� 1 odblokowana
-        false,
-        false,
-        false,
-        false
+        true,   // Broń 1 odblokowana
+        false,  // Broń 2 zablokowana
+        false,  // Broń 3 zablokowana
+        false,  // Broń 4 zablokowana
+        false   // Broń 5 zablokowana
     };
 
     [Header("Catnip Upgrades")]

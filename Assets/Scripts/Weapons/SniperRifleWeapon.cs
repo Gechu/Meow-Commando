@@ -5,6 +5,10 @@ public class SniperRifleWeapon : RangedWeaponBase
     [Header("Sniper feel")]
     [SerializeField] private float extraPostShotDelay = 0.35f; // “bolt action feel”
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip shootSound;
+
     protected override void Awake()
     {
         base.Awake();
@@ -23,5 +27,9 @@ public class SniperRifleWeapon : RangedWeaponBase
 
         // po strzale dodaj “bolt delay”
         nextShotTime = Mathf.Max(nextShotTime, Time.time + extraPostShotDelay);
+
+        // Dźwięk strzału
+        if (audioSource && shootSound)
+            audioSource.PlayOneShot(shootSound);
     }
 }

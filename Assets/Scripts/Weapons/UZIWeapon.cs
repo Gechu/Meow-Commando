@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class UZIWeapon : RangedWeaponBase
 {
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip shootSound;
     protected override void Awake()
     {
         base.Awake();
@@ -17,5 +20,9 @@ public class UZIWeapon : RangedWeaponBase
     {
         Vector2 dir = WeaponUtils.ApplySpread(aimDir, spreadAngle);
         WeaponUtils.SpawnBullet(bulletPrefab, firePoint, dir, bulletSpeed * BulletSpeedMultiplier);
+
+        // Dźwięk strzału
+        if (audioSource && shootSound)
+            audioSource.PlayOneShot(shootSound);
     }
 }

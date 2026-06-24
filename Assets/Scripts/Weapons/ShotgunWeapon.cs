@@ -7,6 +7,10 @@ public class ShotgunWeapon : RangedWeaponBase
     [SerializeField] private float pelletSpreadAngle = 28f; // szeroko
     [SerializeField] private float pelletSpeedJitter = 0.15f;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip shootSound;
+
     protected override void Awake()
     {
         base.Awake();
@@ -27,5 +31,8 @@ public class ShotgunWeapon : RangedWeaponBase
             float speedMul = Random.Range(1f - pelletSpeedJitter, 1f + pelletSpeedJitter);
             WeaponUtils.SpawnBullet(bulletPrefab, firePoint, dir, bulletSpeed * speedMul * BulletSpeedMultiplier);
         }
+        // Dźwięk strzału
+        if (audioSource && shootSound)
+            audioSource.PlayOneShot(shootSound);
     }
 }

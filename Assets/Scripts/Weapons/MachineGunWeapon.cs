@@ -7,6 +7,10 @@ public class MachineGunWeapon : RangedWeaponBase
     [SerializeField] private float recoilMax = 10f;
     [SerializeField] private float recoilRecoverPerSec = 8f;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip shootSound;
+
     private float recoil;
 
     protected override void Awake()
@@ -34,5 +38,9 @@ public class MachineGunWeapon : RangedWeaponBase
         WeaponUtils.SpawnBullet(bulletPrefab, firePoint, dir, bulletSpeed * BulletSpeedMultiplier);
 
         recoil += recoilIncreasePerShot;
+
+        // Dźwięk strzału
+        if (audioSource && shootSound)
+            audioSource.PlayOneShot(shootSound);
     }
 }
