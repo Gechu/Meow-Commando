@@ -114,7 +114,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 1429927367122127863, guid: ea7a878869954f941981ce862c226dbc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -277,7 +277,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8403215288983880825, guid: 1fc24625bd0456347803e6461e418acf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -525,9 +525,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CatnipBehavior
   catnipCount: 0
   duration: 3
-  speedMultiplier: 2
-  fireRateMultiplier: 0.5
-  bulletSpeedMultiplier: 1.5
+  baseSpeedMultiplier: 2
+  baseFireRateMultiplier: 0.5
+  baseBulletSpeedMultiplier: 1.5
   ui: {fileID: 0}
 --- !u!114 &9018413527074813072
 MonoBehaviour:
