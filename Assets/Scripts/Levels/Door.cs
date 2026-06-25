@@ -22,15 +22,16 @@ public class Door : MonoBehaviour
 
     void Start()
     {
-        // Ustaw kolor startowy drzwi
+        // Ukryj lub poka¿ drzwi na starcie zale¿nie od statusu
         if (spriteRenderer != null)
         {
             if (unlocked == false)
             {
-                spriteRenderer.color = lockedColor;
+                spriteRenderer.enabled = false; // Znika wizualnie, gdy zamkniête
             }
             else if (unlocked == true)
             {
+                spriteRenderer.enabled = true;
                 spriteRenderer.color = unlockedColor;
             }
         }
@@ -74,10 +75,11 @@ public class Door : MonoBehaviour
 
         if (spriteRenderer != null)
         {
+            spriteRenderer.enabled = true; // Pojawiaj¹ siê wizualnie po odblokowaniu
             spriteRenderer.color = unlockedColor;
         }
 
-        Debug.Log("Drzwi zosta³y odblokowane!");
+        Debug.Log("Drzwi zosta³y odblokowane i s¹ teraz widoczne!");
     }
 
     void LoadNextScene()
