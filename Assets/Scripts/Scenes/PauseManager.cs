@@ -6,6 +6,14 @@ public class PauseManager : MonoBehaviour
 {
     public GameObject pauseMenu;
     private bool isPaused;
+    public bool IsPaused => isPaused;
+
+    public static PauseManager Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {

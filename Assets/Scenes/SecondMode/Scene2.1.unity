@@ -738,6 +738,10 @@ PrefabInstance:
       propertyPath: baseReward
       value: 35
       objectReference: {fileID: 0}
+    - target: {fileID: 7473068576213102449, guid: d15a808f119ab264885d06a375fa59ba, type: 3}
+      propertyPath: targetTimeSeconds
+      value: 420
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

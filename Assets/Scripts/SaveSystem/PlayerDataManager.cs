@@ -54,6 +54,7 @@ public class PlayerDataManager : MonoBehaviour
         Debug.Log("Loaded Default Player Data");
     }
 
+    /*
     void Update()
     {
         if (Keyboard.current.f5Key.wasPressedThisFrame)
@@ -62,6 +63,7 @@ public class PlayerDataManager : MonoBehaviour
             Debug.Log("Quick Save (F5)");
         }
     }
+    */
 
     public bool UnlockNextWeapon()
     {

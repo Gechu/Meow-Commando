@@ -726,7 +726,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4620781330544459104, guid: 24eb7387ba76c6940bd2fdfb6200ad68, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1983308631}
   m_SourcePrefab: {fileID: 100100000, guid: 24eb7387ba76c6940bd2fdfb6200ad68, type: 3}
 --- !u!1001 &458479575
 PrefabInstance:
@@ -922,6 +925,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &664087916 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7045482671003811520, guid: de0ab8edd62c3134d9f18f74492496b0, type: 3}
+  m_PrefabInstance: {fileID: 1818322759}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &866796745
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -979,51 +987,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bce2ad66e7f5f4241a887213842b6e7a, type: 3}
---- !u!1 &1124776305
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1124776307}
-  - component: {fileID: 1124776306}
-  m_Layer: 0
-  m_Name: LevelMenager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1124776306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1124776305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10cd0edc1b4fa414aaa01a5b2fb5bc9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelChanger
-  ukrytyPortal: {fileID: 0}
---- !u!4 &1124776307
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1124776305}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.43, y: 13.31, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1194975972
 GameObject:
   m_ObjectHideFlags: 0
@@ -7595,7 +7558,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomObjectiveManager
   checklistText: {fileID: 365124245}
   door: {fileID: 2030010703}
-  totalEnemies: 1
+  totalEnemies: 2
 --- !u!4 &1670226207
 Transform:
   m_ObjectHideFlags: 0
@@ -7776,7 +7739,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7467692962413789476, guid: de0ab8edd62c3134d9f18f74492496b0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 365124244}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7045482671003811520, guid: de0ab8edd62c3134d9f18f74492496b0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1818322768}
   m_SourcePrefab: {fileID: 100100000, guid: de0ab8edd62c3134d9f18f74492496b0, type: 3}
 --- !u!114 &1818322760 stripped
 MonoBehaviour:
@@ -7810,7 +7776,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7675942194905622782, guid: de0ab8edd62c3134d9f18f74492496b0, type: 3}
   m_PrefabInstance: {fileID: 1818322759}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 664087916}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8365efb3f4a44524e9f76d36346c68ea, type: 3}
@@ -7827,6 +7793,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31d171ab529c3894c8b2ec2beb009794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoinsUI
+--- !u!114 &1818322768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664087916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf43b2b30142d245a9c314d6144b3f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDeathNotifier
+  roomManager: {fileID: 1670226206}
 --- !u!1 &1967645904 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4620781330544459104, guid: 24eb7387ba76c6940bd2fdfb6200ad68, type: 3}
@@ -7839,6 +7818,24 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1967645904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf43b2b30142d245a9c314d6144b3f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDeathNotifier
+  roomManager: {fileID: 1670226206}
+--- !u!1 &1983308624 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4620781330544459104, guid: 24eb7387ba76c6940bd2fdfb6200ad68, type: 3}
+  m_PrefabInstance: {fileID: 454789862}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1983308631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983308624}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: daf43b2b30142d245a9c314d6144b3f2, type: 3}
@@ -8085,7 +8082,6 @@ SceneRoots:
   - {fileID: 394794344}
   - {fileID: 1204409998}
   - {fileID: 1670226207}
-  - {fileID: 1124776307}
   - {fileID: 1293986272}
   - {fileID: 454789862}
   - {fileID: 866796745}

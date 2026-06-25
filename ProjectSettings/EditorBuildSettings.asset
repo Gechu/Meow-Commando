@@ -65,6 +65,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Boss Room Scenes/Final Boss Room Scene 1.unity
     guid: 92ed5634560879743b30d747115b033e
+  - enabled: 1
+    path: Assets/Scenes/Boss Room Scenes/Minigun Boss Room Scene.unity
+    guid: 0187e31f15ed2934fa698867150bc110
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

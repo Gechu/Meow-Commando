@@ -15,6 +15,7 @@ public class PlayerWeaponManager : MonoBehaviour
 
     private WeaponBase currentWeapon;
     [SerializeField] private PlayerMovementV2 movement;
+    [SerializeField] private PlayerHealth health;
     private WeaponBase[] weapons;
 
     void Awake()
@@ -47,8 +48,15 @@ public class PlayerWeaponManager : MonoBehaviour
         }
 
         // strzelanie (LPM)
-        if (currentWeapon != null && Mouse.current != null && Mouse.current.leftButton.isPressed && !movement.IsDashing)
+        if (currentWeapon != null && Mouse.current != null && Mouse.current.leftButton.isPressed && !movement.IsDashing && health?.IsDead == false)
         {
+            // Nie strzelaj jak pauza jest w³¹czona
+            if (PauseManager.Instance != null && PauseManager.Instance.IsPaused)
+                return;
+
+            // Nie strzelaj gdy sklep jest otwarty
+            if (ShopUIManager.Instance != null && ShopUIManager.Instance.IsOpen)
+                return;
             currentWeapon.TryShoot();
         }
     }

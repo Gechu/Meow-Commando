@@ -212,6 +212,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 266993022613780921, guid: a9b7e563f4525e147abf5a14439f1b89, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 266993022613780921, guid: a9b7e563f4525e147abf5a14439f1b89, type: 3}
       propertyPath: nextLevelName
       value: LevelSummary
       objectReference: {fileID: 0}
@@ -266,13 +270,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8952007766291104829, guid: a9b7e563f4525e147abf5a14439f1b89, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 128903168}
   m_SourcePrefab: {fileID: 100100000, guid: a9b7e563f4525e147abf5a14439f1b89, type: 3}
 --- !u!1 &128903167 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8952007766291104829, guid: a9b7e563f4525e147abf5a14439f1b89, type: 3}
   m_PrefabInstance: {fileID: 128903166}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &128903168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128903167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc0053bc79c2b04f8a6e73096ed2321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Door
+  unlocked: 0
+  spriteRenderer: {fileID: 0}
+  lockedColor: {r: 1, g: 0, b: 0, a: 1}
+  unlockedColor: {r: 1, g: 1, b: 1, a: 1}
+  interactPrompt: {fileID: 8148669441295258553}
+  nextSceneName: LevelSummary
 --- !u!1001 &150001983
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34612,11 +34637,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Interact
       objectReference: {fileID: 0}
+    - target: {fileID: 6453602125768486684, guid: 1a6a8484ae2170b4d9f1f85024de6d44, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a6a8484ae2170b4d9f1f85024de6d44, type: 3}
+--- !u!1 &8148669441295258553 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7122218545075867321, guid: 1a6a8484ae2170b4d9f1f85024de6d44, type: 3}
+  m_PrefabInstance: {fileID: 8148669441295258552}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9008355457786200355
 PrefabInstance:
   m_ObjectHideFlags: 0

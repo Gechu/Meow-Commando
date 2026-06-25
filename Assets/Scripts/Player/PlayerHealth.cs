@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -7,10 +8,21 @@ public class PlayerHealth : MonoBehaviour
     public HealthUI healthUI;
     public int maxHP = 3;
     public int currentHP;
+    [SerializeField] private float damageImmunityTime = 1f;
+    [SerializeField] private float blinkInterval = 0.1f;
+    private SpriteRenderer[] spriteRenderers;
+    private bool isDamageImmune = false;
+    private Coroutine damageCoroutine;
+    public bool IsDead { get; private set; }
 
     void Start()
     {
+        IsDead = false;
+        Debug.Log(IsDead);
+
         movement = GetComponent<IPlayerMovement>();
+
+        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
 
         // Wczytaj dane gracza
         maxHP = PlayerDataManager.Instance.maxHP;
@@ -22,30 +34,39 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        if (IsDead)
+            return;
+
         if (movement != null && movement.IsInvincible)
             return;
-        else
+
+        if (isDamageImmune)
+            return;
+
+        currentHP -= amount;
+        PlayerDataManager.Instance.currentHP = currentHP;
+        LevelRunManager.Instance?.AddDamageTaken(amount);
+
+        if (currentHP < 0)
+            currentHP = 0;
+
+        healthUI.UpdateHearts(currentHP);
+
+        Debug.Log("HP: " + currentHP);
+
+        if (currentHP == 0)
         {
-            currentHP -= amount;
-            PlayerDataManager.Instance.currentHP = currentHP;
-            LevelRunManager.Instance?.AddDamageTaken(amount);
-
-            if (currentHP < 0)
-                currentHP = 0;
-
-            healthUI.UpdateHearts(currentHP);
-
-            Debug.Log("HP: " + currentHP);
-
-            if (currentHP == 0)
-            {
-                Die();
-            }
+            Die();
         }
+
+        StartCoroutine(DamageImmunity());
     }
 
     public void Heal(int amount)
     {
+        if (IsDead)
+            return;
+
         if (currentHP >= maxHP)
             return;
 
@@ -82,9 +103,48 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    private IEnumerator DamageImmunity()
+    {
+        isDamageImmune = true;
+
+        float elapsed = 0f;
+
+        while (elapsed < damageImmunityTime)
+        {
+            foreach (var sr in spriteRenderers)
+            {
+                if (sr != null)
+                    sr.enabled = !sr.enabled;
+            }
+
+            yield return new WaitForSeconds(blinkInterval);
+
+            elapsed += blinkInterval;
+        }
+
+        foreach (var sr in spriteRenderers)
+        {
+            if (sr != null)
+                sr.enabled = true;
+        }
+
+        isDamageImmune = false;
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+
     void Die()
     {
-        Debug.Log("Gracz umar�");
+        if (IsDead) return;
+
+        IsDead = true;
+
+        Debug.Log("Gracz umarł");
+
+        LevelRunManager.Instance?.EndRun();
 
         if (deathScreen != null)
         {

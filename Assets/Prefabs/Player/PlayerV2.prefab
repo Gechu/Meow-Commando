@@ -342,6 +342,7 @@ MonoBehaviour:
   weaponSlot4: {fileID: 9056351981172759449, guid: f71b98d388167c24587e955ac2637281, type: 3}
   weaponSlot5: {fileID: 675140509134083320, guid: 9157cd52cce98c84682d325ebe7175e9, type: 3}
   movement: {fileID: 969416527886032008}
+  health: {fileID: -7419684352436868735}
 --- !u!1 &8865497255373062973
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,6 +512,8 @@ MonoBehaviour:
   healthUI: {fileID: 0}
   maxHP: 3
   currentHP: 0
+  damageImmunityTime: 1
+  blinkInterval: 0.1
 --- !u!114 &-8421191136702742987
 MonoBehaviour:
   m_ObjectHideFlags: 0

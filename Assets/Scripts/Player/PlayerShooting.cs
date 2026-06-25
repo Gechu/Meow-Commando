@@ -20,6 +20,18 @@ public class PlayerShooting : MonoBehaviour
     {
         fireTimer -= Time.deltaTime;
 
+        if (ShopUIManager.Instance != null && ShopUIManager.Instance.IsOpen)
+        {
+            Debug.Log("Shop open");
+            return;
+        }
+
+        if (PauseManager.Instance != null && PauseManager.Instance.IsPaused)
+        {
+            Debug.Log("Pause open");
+            return;
+        }
+
         if (Mouse.current.leftButton.isPressed && fireTimer <= 0f && !movement.IsDashing)
         {
             Shoot();

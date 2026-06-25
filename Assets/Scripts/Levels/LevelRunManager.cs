@@ -67,4 +67,10 @@ public class LevelRunManager : MonoBehaviour
 
         return Mathf.Max(10, reward);
     }
+
+    public void EndRun()
+    {
+        Instance = null;
+        Destroy(gameObject);
+    }
 }
