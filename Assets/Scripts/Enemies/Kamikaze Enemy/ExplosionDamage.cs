@@ -16,12 +16,15 @@ public class ExplosionDamage : MonoBehaviour
 
     private void Start()
     {
+        // Dźwięk eksplozji
         if (explosionSound)
             AudioSource.PlayClipAtPoint(explosionSound, transform.position);
 
+        // Zniszcz cały prefab (rodzic + dzieci)
         Destroy(gameObject, lifeTime);
     }
 
+    // Trigger z dziecka Hitbox trafia tutaj
     private void OnTriggerEnter2D(Collider2D other)
     {
         GameObject root = other.attachedRigidbody ? other.attachedRigidbody.gameObject : other.gameObject;
@@ -33,7 +36,6 @@ public class ExplosionDamage : MonoBehaviour
         {
             Debug.Log($"Explosion hit Player for {damage}");
 
-            // 🔥 ZADAJEMY OBRAŻENIA
             PlayerHealth hp = root.GetComponent<PlayerHealth>();
             if (hp != null)
             {

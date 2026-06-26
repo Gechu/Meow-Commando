@@ -125,7 +125,6 @@ GameObject:
   - component: {fileID: 3159894101723034038}
   - component: {fileID: 5545778302143988549}
   - component: {fileID: 7409926700446085293}
-  - component: {fileID: 4608137744543403600}
   m_Layer: 8
   m_Name: Hitbox
   m_TagString: Untagged
@@ -211,21 +210,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &4608137744543403600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8360652176611060323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c32c75215e302f74cb64c71035129504, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ExplosionDamage
-  damage: 1
-  lifeTime: 0.6
-  explosionSound: {fileID: 8300000, guid: 561208144fb07f144b238ee85af05f8b, type: 3}
 --- !u!1 &8584414912468207456
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,6 +219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7052874939670449470}
+  - component: {fileID: 6379322219115952163}
   m_Layer: 8
   m_Name: Explosion
   m_TagString: Untagged
@@ -259,3 +244,18 @@ Transform:
   - {fileID: 3159894101723034038}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6379322219115952163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8584414912468207456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c32c75215e302f74cb64c71035129504, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExplosionDamage
+  damage: 1
+  lifeTime: 0.6
+  explosionSound: {fileID: 8300000, guid: 561208144fb07f144b238ee85af05f8b, type: 3}
