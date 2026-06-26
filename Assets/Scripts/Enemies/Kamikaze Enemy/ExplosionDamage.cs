@@ -16,7 +16,6 @@ public class ExplosionDamage : MonoBehaviour
 
     private void Start()
     {
-        // 🔊 Dźwięk gra do końca, niezależnie od zniszczenia eksplozji
         if (explosionSound)
             AudioSource.PlayClipAtPoint(explosionSound, transform.position);
 
@@ -26,12 +25,24 @@ public class ExplosionDamage : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         GameObject root = other.attachedRigidbody ? other.attachedRigidbody.gameObject : other.gameObject;
+
         if (hitObjects.Contains(root)) return;
         hitObjects.Add(root);
 
         if (other.CompareTag("Player"))
         {
             Debug.Log($"Explosion hit Player for {damage}");
+
+            // 🔥 ZADAJEMY OBRAŻENIA
+            PlayerHealth hp = root.GetComponent<PlayerHealth>();
+            if (hp != null)
+            {
+                hp.TakeDamage(damage);
+            }
+            else
+            {
+                Debug.LogWarning("Explosion hit Player, but PlayerHealth was not found!");
+            }
         }
     }
 }
