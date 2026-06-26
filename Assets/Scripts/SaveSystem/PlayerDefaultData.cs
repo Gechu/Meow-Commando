@@ -9,7 +9,7 @@ public class PlayerDefaultData : ScriptableObject
 
     [Header("Resources")]
     public int defaultCatnipCount = 0;
-    public int defaultCoins = 0;
+    public int defaultCoins = 150;
 
     [Header("Weapons")]
     public bool[] defaultUnlockedWeapons = new bool[5]
