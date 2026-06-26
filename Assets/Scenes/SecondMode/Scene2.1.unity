@@ -736,7 +736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7473068576213102449, guid: d15a808f119ab264885d06a375fa59ba, type: 3}
       propertyPath: baseReward
-      value: 35
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7473068576213102449, guid: d15a808f119ab264885d06a375fa59ba, type: 3}
       propertyPath: targetTimeSeconds

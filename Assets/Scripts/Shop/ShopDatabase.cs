@@ -38,7 +38,7 @@ public static class ShopDatabase
             ShopItemType.UnlockWeapon,
             "Unlock Weapon",
             "Unlock the next weapon.",
-            250));
+            150));
 
         return items;
     }

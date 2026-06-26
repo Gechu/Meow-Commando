@@ -235,7 +235,7 @@ MonoBehaviour:
   fireRateMultiplierBonus: 0
   bulletSpeedMultiplierBonus: 0
   catnipCount: 0
-  coins: 0
+  coins: 150
 --- !u!4 &56387286
 Transform:
   m_ObjectHideFlags: 0

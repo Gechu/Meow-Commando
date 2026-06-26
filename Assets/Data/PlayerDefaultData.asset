@@ -15,7 +15,7 @@ MonoBehaviour:
   defaultMaxHP: 3
   defaultCurrentHP: 3
   defaultCatnipCount: 0
-  defaultCoins: 0
+  defaultCoins: 150
   defaultUnlockedWeapons: 0100000000
   defaultSpeedMultiplierBonus: 0
   defaultFireRateMultiplierBonus: 0
