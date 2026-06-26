@@ -18,22 +18,22 @@ public class MachineGunEnemyShooting : MonoBehaviour
     public float cooldownJitterPercent = 0.15f;
 
     [Header("Spread (recoil)")]
-    [Tooltip("Bazowy rozrzut (stopnie).")]
     public float baseSpreadAngle = 14f;
-
-    [Tooltip("Ile stopni rozrzutu dodawać na każdy kolejny strzał w serii.")]
     public float recoilPerShot = 0.7f;
 
     [Header("Line of Sight (2D)")]
     public LayerMask wallMask;
     public float losExtra = 0.05f;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip shootSound;
+
     private Transform player;
 
     private bool isBursting;
     private float nextBurstTime;
 
-    // "last seen" aim
     private Vector3 lockedAimPos;
 
     private void Start()
@@ -48,12 +48,11 @@ public class MachineGunEnemyShooting : MonoBehaviour
         if (isBursting) return;
         if (Time.time < nextBurstTime) return;
 
-        // start burst only if in range + has LOS
         if (!IsPlayerInRange()) return;
 
         if (HasLineOfSight2D(player.position))
         {
-            lockedAimPos = player.position; // lock na start
+            lockedAimPos = player.position;
             StartCoroutine(BurstRoutine());
         }
     }
@@ -64,7 +63,6 @@ public class MachineGunEnemyShooting : MonoBehaviour
 
         for (int i = 0; i < shotsPerBurst; i++)
         {
-            // jeśli ma LOS -> aktualizuj, inaczej strzelaj w ostatnie miejsce
             if (HasLineOfSight2D(player.position))
                 lockedAimPos = player.position;
 
@@ -104,12 +102,15 @@ public class MachineGunEnemyShooting : MonoBehaviour
     {
         if (!bulletPrefab || !firePoint) return;
 
+        // 🔊 AUDIO — dźwięk przy każdym strzale
+        if (audioSource && shootSound)
+            audioSource.PlayOneShot(shootSound);
+
         Vector2 toAim = (Vector2)(aimPos - firePoint.position);
         if (toAim.sqrMagnitude < 0.0001f) toAim = Vector2.right;
 
         Vector2 dir = toAim.normalized;
 
-        // recoil: rozrzut rośnie z każdym strzałem
         float spread = baseSpreadAngle + recoilPerShot * shotIndex;
 
         float angleOffset = Random.Range(-spread, spread);
@@ -126,7 +127,6 @@ public class MachineGunEnemyShooting : MonoBehaviour
         if (rb)
             rb.linearVelocity = finalDir * bulletSpeed;
 
-        // Obracamy pocisk w kierunku lotu
         float rotAngle = Mathf.Atan2(finalDir.y, finalDir.x) * Mathf.Rad2Deg;
         bullet.transform.rotation = Quaternion.Euler(0f, 0f, rotAngle);
     }

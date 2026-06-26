@@ -33482,7 +33482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossRoomManager
   bossHealth: {fileID: 522907152}
   doorsToUnlock:
-  - {fileID: 0}
+  - {fileID: 128903168}
 --- !u!1001 &1093872270
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,6 +12,16 @@ public class MinigunBossShooting : MonoBehaviour
 
     private Transform player;
 
+    [Header("Audio Sources")]
+    [SerializeField] private AudioSource minigunSource;      // loop
+    [SerializeField] private AudioSource arcSource;          // shotgun salvos
+    [SerializeField] private AudioSource grenadeSource;      // grenade throw
+
+    [Header("Audio Clips")]
+    [SerializeField] private AudioClip minigunLoopSound;
+    [SerializeField] private AudioClip arcShotgunSound;
+    [SerializeField] private AudioClip grenadeThrowSound;
+
     [Header("Minigun Spray Phase")]
     [SerializeField] private float sprayBulletSpeed = 10f;
     [SerializeField] private float sprayFireRate = 0.07f;
@@ -82,6 +92,14 @@ public class MinigunBossShooting : MonoBehaviour
 
     public void OnPhaseChanged(MinigunBossAI.BossPhase newPhase)
     {
+        // STOP minigun loop jeśli wychodzimy z fazy
+        if (currentPhase == MinigunBossAI.BossPhase.MinigunSpray &&
+            newPhase != MinigunBossAI.BossPhase.MinigunSpray)
+        {
+            if (minigunSource)
+                minigunSource.Stop();
+        }
+
         currentPhase = newPhase;
 
         sprayNextShotTime = Time.time + 0.2f;
@@ -91,6 +109,17 @@ public class MinigunBossShooting : MonoBehaviour
         {
             StopCoroutine(arcRoutine);
             arcRoutine = null;
+        }
+
+        // START minigun loop jeśli wchodzimy w fazę
+        if (newPhase == MinigunBossAI.BossPhase.MinigunSpray)
+        {
+            if (minigunSource && minigunLoopSound)
+            {
+                minigunSource.clip = minigunLoopSound;
+                minigunSource.loop = true;
+                minigunSource.Play();
+            }
         }
     }
 
@@ -127,7 +156,11 @@ public class MinigunBossShooting : MonoBehaviour
 
     private void ThrowGrenadeCircle()
     {
-        Vector3 center = bossAI.transform.position; // 🔥 granaty ze środka
+        // 🔊 Dźwięk rzucenia granatów
+        if (grenadeSource && grenadeThrowSound)
+            grenadeSource.PlayOneShot(grenadeThrowSound);
+
+        Vector3 center = bossAI.transform.position;
 
         for (int i = 0; i < grenadeCount; i++)
         {
@@ -167,6 +200,10 @@ public class MinigunBossShooting : MonoBehaviour
 
         float baseAngle = Mathf.Atan2(aimDir.y, aimDir.x) * Mathf.Rad2Deg;
         float startAngle = baseAngle - arcShotgunArcAngle / 2f;
+
+        // 🔊 dźwięk arc shotgun — raz na salwę
+        if (arcSource && arcShotgunSound)
+            arcSource.PlayOneShot(arcShotgunSound);
 
         for (int s = 0; s < arcShotgunSalvos; s++)
         {

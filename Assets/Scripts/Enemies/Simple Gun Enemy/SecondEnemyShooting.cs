@@ -8,7 +8,7 @@ public class SimpleGunEnemyShooting : MonoBehaviour
     public float bulletSpeed = 7f;
 
     [Header("Range")]
-    public float shootRange = 14f; // <-- NOWE: zasięg strzelania
+    public float shootRange = 14f;
 
     [Header("Aim")]
     public float spreadAngle = 10f;
@@ -21,6 +21,10 @@ public class SimpleGunEnemyShooting : MonoBehaviour
     [Header("Line of Sight (2D)")]
     public LayerMask wallMask;
     public float losExtra = 0.05f;
+
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip shootSound;
 
     private Transform player;
     private float nextShotTime;
@@ -36,9 +40,6 @@ public class SimpleGunEnemyShooting : MonoBehaviour
         if (!player) return;
         if (Time.time < nextShotTime) return;
 
-        // Strzelaj tylko jeśli:
-        // 1) gracz w zasięgu
-        // 2) jest line of sight (brak ściany)
         if (IsPlayerInRange() && HasLineOfSight2D(player.position))
             ShootOneBullet();
 
@@ -76,6 +77,10 @@ public class SimpleGunEnemyShooting : MonoBehaviour
     {
         if (!player || !bulletPrefab || !firePoint) return;
 
+        // AUDIO — dźwięk przy każdym strzale
+        if (audioSource && shootSound)
+            audioSource.PlayOneShot(shootSound);
+
         Vector2 dir = (player.position - firePoint.position).normalized;
 
         float angleOffset = Random.Range(-spreadAngle, spreadAngle);
@@ -92,9 +97,7 @@ public class SimpleGunEnemyShooting : MonoBehaviour
         if (rb)
             rb.linearVelocity = finalDir * bulletSpeed;
 
-        // Obracamy pocisk w kierunku lotu
         float rotAngle = Mathf.Atan2(finalDir.y, finalDir.x) * Mathf.Rad2Deg;
-
         bullet.transform.rotation = Quaternion.Euler(0f, 0f, rotAngle);
     }
 }

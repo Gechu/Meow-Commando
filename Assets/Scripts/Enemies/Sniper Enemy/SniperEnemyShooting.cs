@@ -7,6 +7,10 @@ public class SniperEnemyShooting : MonoBehaviour
     public Transform firePoint;
     public LineRenderer laser;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip shootSound;
+
     [Header("Shot")]
     public float bulletSpeed = 35f;
     public float cooldownAfterShot = 2.0f;
@@ -47,7 +51,6 @@ public class SniperEnemyShooting : MonoBehaviour
 
         bool hasLOS = HasLineOfSight2D(player.position);
 
-        // Jeśli nie ładujemy: start tylko gdy jest LOS
         if (!isCharging)
         {
             if (!hasLOS)
@@ -56,23 +59,19 @@ public class SniperEnemyShooting : MonoBehaviour
                 return;
             }
 
-            // start charge
             isCharging = true;
             chargeTimer = chargeTime;
-            lockedAimPos = player.position; // lock na start
+            lockedAimPos = player.position;
             UpdateLaser(lockedAimPos, true);
             return;
         }
 
-        // Jeśli ładujemy:
-        // - jak straci LOS -> przerwij całkowicie
         if (!hasLOS)
         {
             StopCharging();
             return;
         }
 
-        // ma LOS -> aktualizuj aim i laser
         lockedAimPos = player.position;
         UpdateLaser(lockedAimPos, true);
 
@@ -87,6 +86,10 @@ public class SniperEnemyShooting : MonoBehaviour
 
     private void Fire(Vector3 aimPos)
     {
+        // 🔊 AUDIO — dźwięk pojedynczego strzału snajpera
+        if (audioSource && shootSound)
+            audioSource.PlayOneShot(shootSound);
+
         Vector2 toAim = (Vector2)(aimPos - firePoint.position);
         if (toAim.sqrMagnitude < 0.0001f) toAim = Vector2.right;
 
@@ -96,7 +99,6 @@ public class SniperEnemyShooting : MonoBehaviour
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         if (rb) rb.linearVelocity = dir * bulletSpeed;
 
-        // Obracamy pocisk w kierunku lotu
         float rotAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         bullet.transform.rotation = Quaternion.Euler(0f, 0f, rotAngle);
     }

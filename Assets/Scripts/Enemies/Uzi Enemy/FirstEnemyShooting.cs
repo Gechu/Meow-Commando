@@ -9,19 +9,23 @@ public class UziEnemyShooting : MonoBehaviour
     public float bulletSpeed = 10f;
 
     [Header("Range")]
-    public float shootRange = 14f; // <-- NOWE: zasięg strzelania
+    public float shootRange = 14f;
 
     [Header("Spread")]
     public float spreadAngle = 10f;
 
     [Header("Burst")]
-    public float timeBetweenShots = 0.2f;
-    public float burstCooldown = 2f;
+    public float timeBetweenShots = 0.1f;
+    public float burstCooldown = 1.4f;
     public int numofShots = 3;
 
     [Header("Line of Sight (2D)")]
-    public LayerMask wallMask;     // warstwa ścian (2D collidery)
+    public LayerMask wallMask;
     public float losExtra = 0.1f;
+
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip burstSound;   // <-- dźwięk trzech strzałów
 
     Transform player;
     bool isShooting = false;
@@ -45,9 +49,10 @@ public class UziEnemyShooting : MonoBehaviour
 
         for (int i = 0; i < numofShots; i++)
         {
-            // Strzelaj tylko jeśli:
-            // 1) gracz w zasięgu
-            // 2) jest line of sight (brak ściany)
+            // DŹWIĘK TYLKO PRZY PIERWSZYM STRZALE
+            if (i == 0 && audioSource && burstSound)
+                audioSource.PlayOneShot(burstSound);
+
             if (IsPlayerInRange() && HasLineOfSight2D(player.position))
                 ShootOneBullet();
 
@@ -101,9 +106,7 @@ public class UziEnemyShooting : MonoBehaviour
         if (rb)
             rb.linearVelocity = finalDir * bulletSpeed;
 
-        // Obracamy pocisk w kierunku lotu
         float rotAngle = Mathf.Atan2(finalDir.y, finalDir.x) * Mathf.Rad2Deg;
-
         bullet.transform.rotation = Quaternion.Euler(0f, 0f, rotAngle);
     }
 }

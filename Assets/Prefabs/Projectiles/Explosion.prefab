@@ -229,4 +229,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExplosionDamage
   damage: 1
-  lifeTime: 0.3
+  lifeTime: 0.5
+  explosionSound: {fileID: 8300000, guid: 561208144fb07f144b238ee85af05f8b, type: 3}

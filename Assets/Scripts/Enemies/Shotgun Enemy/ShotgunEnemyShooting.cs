@@ -9,6 +9,10 @@ public class ShotgunShooting : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject bulletPrefab;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip shootSound;
+
     [Header("Range")]
     [SerializeField] private float shootRange = 9f;
 
@@ -24,14 +28,9 @@ public class ShotgunShooting : MonoBehaviour
     [SerializeField] private int pelletsMax = 12;
 
     [Header("Spread - Core + Outer")]
-    [Tooltip("Ile procent pelletów ma być w rdzeniu (mały rozrzut).")]
     [Range(0f, 1f)]
     [SerializeField] private float corePelletRatio = 0.65f;
-
-    [Tooltip("Rozrzut rdzenia (stopnie).")]
     [SerializeField] private float coreSpreadAngle = 10f;
-
-    [Tooltip("Rozrzut zewnętrzny (stopnie).")]
     [SerializeField] private float outerSpreadAngle = 35f;
 
     [Header("Pellet Speed")]
@@ -65,13 +64,13 @@ public class ShotgunShooting : MonoBehaviour
 
         isAiming = true;
         aimTimer = aimTime;
-        lockedAimPos = initialPlayerPos; // lock na starcie
+        lockedAimPos = initialPlayerPos;
     }
 
     public void UpdateLockedAim(Vector3 playerPos)
     {
         if (!isAiming) return;
-        lockedAimPos = playerPos; // aktualizuj tylko gdy AI mówi, że jest LOS
+        lockedAimPos = playerPos;
     }
 
     private void Update()
@@ -95,6 +94,10 @@ public class ShotgunShooting : MonoBehaviour
     {
         if (!firePoint || !bulletPrefab) return;
 
+        // AUDIO — dźwięk pojedynczego strzału shotgunowego
+        if (audioSource && shootSound)
+            audioSource.PlayOneShot(shootSound);
+
         Vector2 toAim = (aimWorldPos - firePoint.position);
         if (toAim.sqrMagnitude < 0.0001f) toAim = Vector2.right;
 
@@ -104,11 +107,9 @@ public class ShotgunShooting : MonoBehaviour
         int coreCount = Mathf.Clamp(Mathf.RoundToInt(pelletCount * corePelletRatio), 0, pelletCount);
         int outerCount = pelletCount - coreCount;
 
-        // 1) Rdzeń: mały rozrzut (bardziej groźny / częściej trafia)
         for (int i = 0; i < coreCount; i++)
             SpawnPellet(baseDir, coreSpreadAngle);
 
-        // 2) Zewnętrzne: większy rozrzut (ładny “wachlarz”)
         for (int i = 0; i < outerCount; i++)
             SpawnPellet(baseDir, outerSpreadAngle);
     }
@@ -131,11 +132,9 @@ public class ShotgunShooting : MonoBehaviour
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         if (rb) rb.linearVelocity = dir * speed;
 
-        // Obracamy pocisk w kierunku lotu
         float rotAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         bullet.transform.rotation = Quaternion.Euler(0f, 0f, rotAngle);
 
         Destroy(bullet, pelletLifetime);
-        
     }
 }

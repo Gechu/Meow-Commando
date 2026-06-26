@@ -11,8 +11,19 @@ public enum CorgiShootMode
 
 public class DonCorgiShooting : MonoBehaviour
 {
+    [Header("References")]
     public GameObject bulletPrefab;
     public Transform firePoint;
+
+    [Header("Audio Sources")]
+    public AudioSource pistolSource;
+    public AudioSource machineGunSource;
+    public AudioSource waveSource;
+
+    [Header("Audio Clips")]
+    public AudioClip pistolSound;
+    public AudioClip machineGunSound;
+    public AudioClip waveSound;
 
     [Header("Pistol")]
     public float pistolCooldown = 0.6f;
@@ -57,25 +68,53 @@ public class DonCorgiShooting : MonoBehaviour
         }
     }
 
+    // ---------------------------------------------------------
+    //  PISTOL
+    // ---------------------------------------------------------
+
     IEnumerator PistolShot()
     {
         isShooting = true;
+
+        // 🔊 Dźwięk pojedynczego strzału
+        if (pistolSource && pistolSound)
+            pistolSource.PlayOneShot(pistolSound);
+
         ShootTowardsPlayer(pistolBulletSpeed);
+
         yield return new WaitForSeconds(pistolCooldown);
         isShooting = false;
     }
 
+    // ---------------------------------------------------------
+    //  MACHINE GUN (pojedyncze strzały)
+    // ---------------------------------------------------------
+
     IEnumerator MachineGunBurst()
     {
         isShooting = true;
+
+        // 🔊 Dźwięk pojedynczego strzału MG
+        if (machineGunSource && machineGunSound)
+            machineGunSource.PlayOneShot(machineGunSound);
+
         ShootTowardsPlayer(mgBulletSpeed);
+
         yield return new WaitForSeconds(mgCooldown);
         isShooting = false;
     }
 
+    // ---------------------------------------------------------
+    //  WAVE ATTACK (360°)
+    // ---------------------------------------------------------
+
     IEnumerator WaveAttack()
     {
         isShooting = true;
+
+        // 🔊 Dźwięk fali — raz na całą falę
+        if (waveSource && waveSound)
+            waveSource.PlayOneShot(waveSound);
 
         float angleStep = 360f / waveBulletCount;
         float angle = 0f;
@@ -93,7 +132,6 @@ public class DonCorgiShooting : MonoBehaviour
             if (rb)
                 rb.linearVelocity = dir * waveBulletSpeed;
 
-            // Obrót pocisku w kierunku lotu
             float rot = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             bullet.transform.rotation = Quaternion.Euler(0f, 0f, rot);
 
@@ -104,6 +142,9 @@ public class DonCorgiShooting : MonoBehaviour
         isShooting = false;
     }
 
+    // ---------------------------------------------------------
+    //  COMMON BULLET SPAWN
+    // ---------------------------------------------------------
 
     void ShootTowardsPlayer(float speed)
     {
